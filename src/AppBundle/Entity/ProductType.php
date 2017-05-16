@@ -15,34 +15,65 @@ use Doctrine\Common\Collections\ArrayCollection;
 	/**
 	* @ORM\Column(type="integer")
 	* @ORM\Id
-	* @ORM\GeneratedValue(strategy="AUTO")
 	*/
 	private $tid;
 
-	/**
-	* @ORM\Column(type="string", length=100)
+ /**
+  * @ORM\Column(type="string", length=100)
 	*/
 	private $beschrijving;
 
-  /**
+ /**
   * @ORM\OneToMany(targetEntity="Product", mappedBy="producttype")
   */
   private $producten;
 
-	public function settid($tid) {
-		$this->$tid = $tid;
-	}
+  /**
+   * Set tid
+   *
+   * @param integer $tid
+   *
+   * @return ProductTypen
+   */
+  public function settid($tid)
+  {
+      $this->tid = $tid;
 
-	public function gettid() {
-		return $this->tid;
-	}
+      return $this;
+  }
 
-	public function setBeschrijving($beschrijving) {
-		$this->$beschrijving = $beschrijving;
-	}
+  /**
+   * Get tid
+   *
+   * @return int
+   */
+  public function gettid()
+  {
+      return $this->tid;
+  }
 
-	public function getBeschrijving () {
-		return $this->beschrijving;
+  /**
+   * Set beschrijving
+   *
+   * @param string $beschrijving
+   *
+   * @return ProductTypen
+   */
+  public function setBeschrijving($beschrijving)
+  {
+      $this->beschrijving = $beschrijving;
+
+      return $this;
+  }
+
+  /**
+   * Get beschrijving
+   *
+   * @return string
+   */
+  public function getBeschrijving()
+  {
+      return $this->beschrijving;
   }
 }
 ?>

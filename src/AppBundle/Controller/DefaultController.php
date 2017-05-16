@@ -31,12 +31,23 @@ class DefaultController extends Controller
      */
     public function alleKlanten(request $request) {
         $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findall();
-        $tekst = "";
-        foreach($klanten as $klant) {
-          $tekst = $tekst . $klant->getVoornaam() . " " . $klant->getAchternaam() . " " . $klant->getTelefoonnummer() . "<br />";
+        return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
+    }
 
-        }
-        return new Response("$tekst");
+    /**
+     * @Route("/alle/producten", name="alleproducten")
+     */
+    public function alleProducten(request $request) {
+        $producten = $this->getDoctrine()->getRepository("AppBundle:Product")->findall();
+        return new Response($this->render('producten.html.twig', array('producten' => $producten)));
+    }
+
+    /**
+     * @Route("/alle/producttype", name="alleproducttype")
+     */
+    public function alleProducttype(request $request) {
+        $producttype = $this->getDoctrine()->getRepository("AppBundle:ProductType")->findall();
+        return new Response($this->render('producttype.html.twig', array('producttype' => $producttype)));
     }
 
     /**
@@ -44,12 +55,7 @@ class DefaultController extends Controller
      */
     public function klantOpVoornaam(request $request, $voornaam) {
         $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findByVoornaam($voornaam);
-        $tekst = "";
-        foreach($klanten as $klant) {
-          $tekst = $tekst . $klant->getVoornaam() . " " . $klant->getAchternaam() . " " . $klant->getTelefoonnummer() . "<br />";
-
-        }
-        return new Response("$tekst");
+        return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
     }
 
     /**
@@ -57,12 +63,7 @@ class DefaultController extends Controller
     */
     public function klantOpWoonplaats(request $request, $woonplaats) {
         $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findByWoonplaats($woonplaats);
-        $tekst = "";
-        foreach($klanten as $klant) {
-          $tekst = $tekst . $klant->getVoornaam() . " " . $klant->getAchternaam() . " " . $klant->getWoonplaats() . "<br />";
-
-          }
-          return new Response("$tekst");
+        return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
     }
     /**
        * @Route("/klant/nieuw", name="nieuweklant")
@@ -79,7 +80,7 @@ class DefaultController extends Controller
   			return $this->redirect($this->generateurl("nieuweklant"));
   		}
 
-  		return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+  		return new Response($this->render('formklant.html.twig', array('form' => $form->createView())));
       }
   /**
       * @Route("/klant/wijzig/{klantnummer}", name="klantwijzigen")
@@ -96,8 +97,9 @@ class DefaultController extends Controller
     	return $this->redirect($this->generateurl("klantwijzigen", array("klantnummer" => $bestaandeklant->getKlantnummer())));
     }
 
-    return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+    return new Response($this->render('formproductype.html.twig', array('form' => $form->createView())));
     }
+
     /**
        * @Route("/producttype/nieuw", name="nieuweproducttype")
        */
@@ -113,7 +115,7 @@ class DefaultController extends Controller
   			return $this->redirect($this->generateurl("nieuweproducttype"));
   		}
 
-  		return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+  		return new Response($this->render('formproducttype.html.twig', array('form' => $form->createView())));
       }
   /**
       * @Route("/producttype/wijzig/{tid}", name="producttypewijzigen")
@@ -130,30 +132,30 @@ class DefaultController extends Controller
     	return $this->redirect($this->generateurl("producttypewijzigen", array("tid" => $bestaandeproducttype->gettid())));
     }
 
-    return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+    return new Response($this->render('formproducttype.html.twig', array('form' => $form->createView())));
     }
-  /**
-     * @Route("/product/nieuw", name="nieuweproduct")
-     */
-    public function nieuweProduct(Request $request) {
-    $nieuweProduct = new Product();
-    $form = $this->createForm(ProductForm::class, $nieuweProduct);
-
-      $form->handleRequest($request);
-    if ($form->isSubmitted() && $form->isValid()) {
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($nieuweProduct);
-      $em->flush();
-      return $this->redirect($this->generateurl("nieuweproduct"));
-      }
-
-      return new Response($this->render('form.html.twig', array('form' => $form->createView())));
-      }
-
     /**
-        * @Route("/product/wijzig/{barcode}", name="productwijzigen")
-        */
-      public function wijzigProduct(Request $request, $barcode) {
+       * @Route("/product/nieuw", name="nieuweproduct")
+       */
+      public function nieuweProduct(Request $request) {
+      $nieuweProduct = new Product();
+      $form = $this->createForm(ProductForm::class, $nieuweProduct);
+
+        $form->handleRequest($request);
+      if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($nieuweProduct);
+        $em->flush();
+        return $this->redirect($this->generateurl("nieuweproduct"));
+        }
+
+        return new Response($this->render('formproduct.html.twig', array('form' => $form->createView())));
+        }
+
+  /**
+    * @Route("/product/wijzig/{barcode}", name="productwijzigen")
+    */
+    public function wijzigProduct(Request $request, $barcode) {
       $bestaandeproduct = $this->getDoctrine()->getRepository("AppBundle:Product")->find($barcode);
       $form = $this->createForm(ProductForm::class, $bestaandeproduct);
 
@@ -162,10 +164,43 @@ class DefaultController extends Controller
       	$em = $this->getDoctrine()->getManager();
       	$em->persist($bestaandeproduct);
       	$em->flush();
-      	return $this->redirect($this->generateurl("productwijzigen", array("barcode" => $bestaandeproduct->getBarcode())));
+      	return $this->redirect($this->generateurl("productwijzigen", array("barcode" => $bestaandeproduct->getbarcode())));
       }
 
-      return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+      return new Response($this->render('formproduct.html.twig', array('form' => $form->createView())));
+    }
+
+  /**
+    * @Route("/klant/verwijder/{klantnummer}", name="klantverwijderen")
+    */
+    public function verwijderKlant(Request $request, $klantnummer) {
+      $em = $this->getDoctrine()->getManager();
+      $bestaandeklant = $em->getRepository("AppBundle:Klant")->find($klantnummer);
+      $em->remove($bestaandeklant);
+      $em->flush();
+      return $this->redirect($this->generateurl("alleklanten"));
+    }
+
+  /**
+    * @Route("/product/verwijder/{barcode}", name="productverwijderen")
+    */
+    public function verwijderProduct(Request $request, $barcode) {
+      $em = $this->getDoctrine()->getManager();
+      $bestaandeproduct = $em->getRepository("AppBundle:Product")->find($barcode);
+      $em->remove($bestaandeproduct);
+      $em->flush();
+      return $this->redirect($this->generateurl("alleproducten"));
+      }
+
+  /**
+    * @Route("/producttype/verwijder/{tid}", name="producttypeverwijderen")
+    */
+    public function verwijderProducttype(Request $request, $tid) {
+      $em = $this->getDoctrine()->getManager();
+      $bestaandeproducttype = $em->getRepository("AppBundle:ProductType")->find($tid);
+      $em->remove($bestaandeproducttype);
+      $em->flush();
+      return $this->redirect($this->generateurl("alleproducttype"));
       }
 
 }

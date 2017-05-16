@@ -36,7 +36,7 @@ class ProductType extends AbstractType
         $builder
             ->add('opmerking', TextType::class) //naam is b.v. een attribuut of variabele van klant
         ;
-        		//zie
+		//zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types
 		//voor meer typen invoer
     }

@@ -3,6 +3,6 @@
 <form method="post" action="">
     {{ form_widget(form) }}
     <input class="btn btn-default" type="submit">
-    <a href="javascript:history.back()">Annuleren</a>
+    <a href="{{ path('alleproducten') }}">Annuleren</a>
 </form>
 {% endblock %}
