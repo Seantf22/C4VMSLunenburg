@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<br><br>
+	<a href="{{ path('home') }}">Home</a>
+	<h1>Overzicht artikelen</h1>
+	<a href="{{ path('nieuweartikel') }}">Nieuw Artikel</a>
+	<br><br>
+	{% for artikel in artikel %}
+			<span class="kleurrood" class="marge10">
+				<a href="{{ path('artikelwijzigen',{'artikelnummer':artikel.artikelnummer}) }}">Wijzig</a>
+				<a href="{{ path('artikelverwijderen',{'artikelnummer':artikel.artikelnummer}) }}">Delete</a>
+				{{ artikel.artikelnummer }}
+			</span>
+			<span class="marge10" >{{ artikel.omschrijving }}</span>
+			<span class="marge10" >{{ artikel.technischeSpecificaties }}</span>
+			<span class="marge10" >{{ artikel.magazijnlocatie }}</span>
+			<span class="marge10" >{{ artikel.inkoopprijs }}</span>
+			<span class="marge10" >{{ artikel.codeVervangendArtikel }}</span>
+			<span class="marge10" >{{ artikel.minimumVoorraad }}</span>
+			<span class="marge10" >{{ artikel.voorraadAantal }}</span>
+			<span class="marge10" >{{ artikel.bestelserie }}</span>
+			<br>
+	{% endfor %}
+
+{% endblock %}
