@@ -14,9 +14,7 @@ class Product
 {
     /**
      * @var string
-     *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="barcode", type="string", length=20, unique=true)
      */
     private $barcode;
@@ -55,6 +53,11 @@ class Product
      */
     private $opmerking;
 
+    /**
+    * @ORM\ManyToOne(targetEntity="producttype", inversedBy="producten")
+    * @ORM\JoinColumn(name="producttype", referencedColumnName="tid")
+    */
+    private $producten;
 
     /**
      * Get id
@@ -210,10 +213,6 @@ class Product
         return $this->opmerking;
     }
 
-    /**
-    * @ORM\ManyToOne(targetEntity="producttype", inversedBy="producten")
-    * @ORM\JoinColumn(name="producttype", referencedColumnName="tid")
-    */
 
 
 }
