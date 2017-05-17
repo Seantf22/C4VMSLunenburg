@@ -13,6 +13,8 @@ use AppBundle\Form\Type\ProductType as ProductForm;
 use AppBundle\Entity\Product;
 use AppBundle\Form\Type\ArtikelType as ArtikelForm;
 use AppBundle\Entity\Artikel;
+use AppBundle\Form\Type\MagazijnlocatieType as magazijnForm;
+use AppBundle\Entity\Magazijnlocatie;
 
 class DefaultController extends Controller
 {
@@ -67,6 +69,14 @@ class DefaultController extends Controller
     public function alleArtikelen(request $request) {
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findall();
         return new Response($this->render('artikel.html.twig', array('artikel' => $artikelen)));
+    }
+
+    /**
+     * @Route("/alle/magazijnlocatie", name="allemagazijnlocatie")
+     */
+    public function alleMagazijnlocatie(request $request) {
+        $magazijnlocatie  = $this->getDoctrine()->getRepository("AppBundle:Magazijnlocatie")->findall();
+        return new Response($this->render('magazijnlocatie.html.twig', array('magazijnlocatie' => $magazijnlocatie)));
     }
 
     /**
@@ -270,4 +280,38 @@ class DefaultController extends Controller
     return new Response($this->render('formartikel.html.twig', array('form' => $form->createView())));
   }
 
+  /**
+     * @Route("/magazijnlocatie/nieuw", name="nieuwemagazijnlocatie")
+     */
+    public function nieuwemagazijnlocatie(Request $request) {
+    $nieuwemagazijnlocatie = new Magazijnlocatie();
+    $form = $this->createForm(MagazijnForm::class, $nieuwemagazijnlocatie);
+
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($nieuwemagazijnlocatie);
+      $em->flush();
+      return $this->redirect($this->generateurl("nieuwemagazijnlocatie"));
+    }
+
+    return new Response($this->render('formmagazijn.html.twig', array('form' => $form->createView())));
+    }
+  /**
+    * @Route("/magazijnlocatie/wijzig/{magazijnlocatie}", name="magazijnlocatiewijzigen")
+    */
+  public function wijzigMagazijnlocatie(Request $request, $magazijnlocatie) {
+  $bestaandemagazijnlocatie = $this->getDoctrine()->getRepository("AppBundle:Magazijnlocatie")->find($magazijnlocatie);
+  $form = $this->createForm(MagazijnForm::class, $bestaandemagazijnlocatie);
+
+  $form->handleRequest($request);
+  if ($form->isSubmitted() && $form->isValid()) {
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($bestaandemagazijnlocatie);
+    $em->flush();
+    return $this->redirect($this->generateurl("magazijnlocatiewijzigen", array("magazijnlocatie" => $bestaandemagazijnlocatie->getMagazijnlocatie())));
+  }
+
+  return new Response($this->render('formmagazijn.html.twig', array('form' => $form->createView())));
+  }
 }

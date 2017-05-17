@@ -38,7 +38,7 @@ class Artikel
     /**
      * @var string
      *
-     * @ORM\Column(name="magazijnlocatie", type="string", length=255)
+     * @ORM\Column(name="magazijnlocatie", type="string", length=6)
      */
     private $magazijnlocatie;
 
@@ -76,7 +76,6 @@ class Artikel
      * @ORM\Column(name="bestelserie", type="integer")
      */
     private $bestelserie;
-
 
     /**
      * Get id

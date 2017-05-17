@@ -27,7 +27,7 @@ class ArtikelType extends AbstractType
             ->add('technischeSpecificaties', TextType::class) //naam is b.v. een attribuut of variabele van klant
         ;
         $builder
-            ->add('magazijnlocatie', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('magazijnlocatie', TextType::class)
         ;
         $builder
             ->add('inkoopprijs', MoneyType::class) //naam is b.v. een attribuut of variabele van klant
