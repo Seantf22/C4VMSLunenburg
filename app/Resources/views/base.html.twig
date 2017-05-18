@@ -1,17 +1,27 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
 
+{% include 'header.html.twig'%}
+    <body>
+         <div class="container"> 
+       
+        <div class="topnav">
+ 
+  
+  <a href="{{ path('alleartikelen') }}"  class="active">Alle Artikelen</a>
+  </div>
+   
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+       
+ {% endblock %}
+
+
+
+      </div>
+    </body>
+      {% include 'footer.html.twig'%} 
+</html>
+<!-- 
 <style>
 .kleurrood {
   color:red;
@@ -29,3 +39,9 @@
 border-style:groove;
 }
 </style>
+ <a href="{{ path('alleproducten') }}">Alle Producten</a>
+  
+  <a href="{{ path('alleproducttype') }}">Alle ProductType</a>
+  
+  <a href="{{ path('alleklanten') }}">Alle Klanten</a>
+ -->
