@@ -42,7 +42,7 @@ class DefaultController extends Controller
      */
     public function alleKlanten(request $request) {
         $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findall();
-        return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
+        return new Response($this->renderView('klanten.html.twig', array('klanten' => $klanten)));
     }
 
     /**
@@ -50,7 +50,7 @@ class DefaultController extends Controller
      */
     public function alleProducten(request $request) {
         $producten = $this->getDoctrine()->getRepository("AppBundle:Product")->findall();
-        return new Response($this->render('producten.html.twig', array('producten' => $producten)));
+        return new Response($this->renderView('producten.html.twig', array('producten' => $producten)));
     }
 
     /**
@@ -58,7 +58,7 @@ class DefaultController extends Controller
      */
     public function alleProducttype(request $request) {
         $producttype = $this->getDoctrine()->getRepository("AppBundle:ProductType")->findall();
-        return new Response($this->render('producttype.html.twig', array('producttype' => $producttype)));
+        return new Response($this->renderView('producttype.html.twig', array('producttype' => $producttype)));
     }
 
     /**
@@ -66,7 +66,7 @@ class DefaultController extends Controller
      */
     public function alleArtikelen(request $request) {
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findall();
-        return new Response($this->render('artikel.html.twig', array('artikel' => $artikelen)));
+        return new Response($this->renderView('artikel.html.twig', array('artikel' => $artikelen)));
     }
 
     /**
@@ -74,7 +74,7 @@ class DefaultController extends Controller
      */
     public function klantOpVoornaam(request $request, $voornaam) {
         $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findByVoornaam($voornaam);
-        return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
+        return new Response($this->renderView('klanten.html.twig', array('klanten' => $klanten)));
     }
 
     /**
@@ -82,7 +82,7 @@ class DefaultController extends Controller
     */
     public function klantOpWoonplaats(request $request, $woonplaats) {
         $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findByWoonplaats($woonplaats);
-        return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
+        return new Response($this->renderView('klanten.html.twig', array('klanten' => $klanten)));
     }
     /**
        * @Route("/klant/nieuw", name="nieuweklant")
@@ -99,7 +99,7 @@ class DefaultController extends Controller
   			return $this->redirect($this->generateurl("nieuweklant"));
   		}
 
-  		return new Response($this->render('formklant.html.twig', array('form' => $form->createView())));
+  		return new Response($this->renderView('formklant.html.twig', array('form' => $form->createView())));
       }
   /**
       * @Route("/klant/wijzig/{klantnummer}", name="klantwijzigen")
@@ -116,7 +116,7 @@ class DefaultController extends Controller
     	return $this->redirect($this->generateurl("klantwijzigen", array("klantnummer" => $bestaandeklant->getKlantnummer())));
     }
 
-    return new Response($this->render('formproductype.html.twig', array('form' => $form->createView())));
+    return new Response($this->renderView('formproducttype.html.twig', array('form' => $form->createView())));
     }
 
     /**
@@ -134,7 +134,7 @@ class DefaultController extends Controller
   			return $this->redirect($this->generateurl("nieuweproducttype"));
   		}
 
-  		return new Response($this->render('formproducttype.html.twig', array('form' => $form->createView())));
+  		return new Response($this->renderView('formproducttype.html.twig', array('form' => $form->createView())));
       }
   /**
       * @Route("/producttype/wijzig/{tid}", name="producttypewijzigen")
@@ -151,7 +151,7 @@ class DefaultController extends Controller
     	return $this->redirect($this->generateurl("producttypewijzigen", array("tid" => $bestaandeproducttype->gettid())));
     }
 
-    return new Response($this->render('formproducttype.html.twig', array('form' => $form->createView())));
+    return new Response($this->renderView('formproducttype.html.twig', array('form' => $form->createView())));
     }
 
     /**
@@ -187,7 +187,7 @@ class DefaultController extends Controller
       	return $this->redirect($this->generateurl("productwijzigen", array("barcode" => $bestaandeproduct->getbarcode())));
       }
 
-      return new Response($this->render('formproduct.html.twig', array('form' => $form->createView())));
+      return new Response($this->renderView('formproduct.html.twig', array('form' => $form->createView())));
     }
 
   /**
