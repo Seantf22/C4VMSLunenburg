@@ -76,7 +76,7 @@ class DefaultController extends Controller
      */
     public function alleMagazijnlocatie(request $request) {
         $magazijnlocatie  = $this->getDoctrine()->getRepository("AppBundle:Magazijnlocatie")->findall();
-        return new Response($this->render('magazijnlocatie.html.twig', array('magazijnlocatie' => $magazijnlocatie)));
+        return new Response($this->renderView('magazijnlocatie.html.twig', array('magazijnlocatie' => $magazijnlocatie)));
     }
 
     /**
@@ -179,7 +179,7 @@ class DefaultController extends Controller
         return $this->redirect($this->generateurl("nieuweproduct"));
         }
 
-        return new Response($this->render('formproduct.html.twig', array('form' => $form->createView())));
+        return new Response($this->renderView('formproduct.html.twig', array('form' => $form->createView())));
         }
 
   /**
@@ -259,7 +259,7 @@ class DefaultController extends Controller
       return $this->redirect($this->generateurl("nieuweartikel"));
       }
 
-      return new Response($this->render('formartikel.html.twig', array('form' => $form->createView())));
+      return new Response($this->renderView('formartikel.html.twig', array('form' => $form->createView())));
       }
 
   /**
@@ -277,7 +277,7 @@ class DefaultController extends Controller
       return $this->redirect($this->generateurl("artikelwijzigen", array("artikelnummer" => $bestaandeartikel->getArtikelnummer())));
     }
 
-    return new Response($this->render('formartikel.html.twig', array('form' => $form->createView())));
+    return new Response($this->renderView('formartikel.html.twig', array('form' => $form->createView())));
   }
 
   /**
@@ -295,7 +295,7 @@ class DefaultController extends Controller
       return $this->redirect($this->generateurl("nieuwemagazijnlocatie"));
     }
 
-    return new Response($this->render('formmagazijn.html.twig', array('form' => $form->createView())));
+    return new Response($this->renderView('formmagazijn.html.twig', array('form' => $form->createView())));
     }
   /**
     * @Route("/magazijnlocatie/wijzig/{magazijnlocatie}", name="magazijnlocatiewijzigen")
@@ -312,6 +312,6 @@ class DefaultController extends Controller
     return $this->redirect($this->generateurl("magazijnlocatiewijzigen", array("magazijnlocatie" => $bestaandemagazijnlocatie->getMagazijnlocatie())));
   }
 
-  return new Response($this->render('formmagazijn.html.twig', array('form' => $form->createView())));
+  return new Response($this->renderView('formmagazijn.html.twig', array('form' => $form->createView())));
   }
 }

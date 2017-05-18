@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+ <div class="container"> 
 	<br><br>
 	<h1>Overzicht Magazijnlocatie</h1>
 	<a href="{{ path('nieuwemagazijnlocatie') }}">Nieuw Locatie</a>
@@ -14,5 +15,5 @@
 			<span class="marge10" >{{ magazijnlocatie.artikelid }}</span>
 			<br>
 	{% endfor %}
-
+</div>
 {% endblock %}

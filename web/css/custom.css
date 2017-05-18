@@ -3,6 +3,10 @@
 background-color: red;
 }
 	
+body{
+background-color:red;
+
+}
 
 a {
 	color:red;
@@ -11,7 +15,8 @@ a {
 
 .container{
 	text-align: center;
-  margin: auto;
+  margin: 100px;
+
 }
 .topnav {
   overflow: hidden;

@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+<div class="container">
 	<br><br>
-	<h1>Overzicht artikelen</h1>
+	<body><h1>Overzicht artikelen</h1></body>
 	<a href="{{ path('nieuweartikel') }}">Nieuw Artikel</a>
 	<br><br>
 	{% for artikel in artikel %}
@@ -20,5 +21,6 @@
 			<span class="marge10" >{{ artikel.bestelserie }}</span>
 			<br>
 	{% endfor %}
+	</div>
 
 {% endblock %}
