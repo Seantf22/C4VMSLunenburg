@@ -18,13 +18,14 @@ class ArtikelType extends AbstractType
     {
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
         $builder
+            ->add('artikelnummer', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
+        ;
+        $builder
             ->add('omschrijving', TextType::class) //naam is b.v. een attribuut of variabele van klant
         ;
         $builder
-            ->add('technischeSpecificaties', TextType::class, array(
-        'required' => false,
-        'empty_data' => 'Niet aanwezig'
-    )) //naam is b.v. een attribuut of variabele van klant
+            ->add('technischeSpecificaties', TextType::class, //naam is b.v. een attribuut of variabele van klant
+            array('required' => false))
         ;
         $builder
             ->add('magazijnlocatie', TextType::class)
@@ -33,10 +34,8 @@ class ArtikelType extends AbstractType
             ->add('inkoopprijs', MoneyType::class) //naam is b.v. een attribuut of variabele van klant
         ;
         $builder
-            ->add('codeVervangendArtikel', IntegerType::class, array(
-        'required' => false,
-        'empty_data' => '0'
-    )) //naam is b.v. een attribuut of variabele van klant
+            ->add('codeVervangendArtikel', IntegerType::class, //naam is b.v. een attribuut of variabele van klant
+            array('required' => false))
         ;
         $builder
             ->add('minimumVoorraad', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
@@ -58,8 +57,6 @@ class ArtikelType extends AbstractType
 			'data_class' => 'AppBundle\Entity\Artikel', //Entiteit vervangen door b.v. Klant
 		));
 	}
-
-
 }
 
 ?>
