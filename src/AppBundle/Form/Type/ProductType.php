@@ -24,17 +24,20 @@ class ProductType extends AbstractType
             ->add('naam', TextType::class) //naam is b.v. een attribuut of variabele van klant
         ;
         $builder
-            ->add('merk', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('merk', TextType::class, //naam is b.v. een attribuut of variabele van klant
+            array('required' => false))
         ;
         $builder->add('producttype', EntityType::class, array(
             'class' => 'AppBundle:ProductType',
             'choice_label' => 'beschrijving',
-        ));
+            'required' => false))
+        ;
         $builder
             ->add('inkoopprijs', MoneyType::class) //naam is b.v. een attribuut of variabele van klant
         ;
         $builder
-            ->add('opmerking', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('opmerking', TextType::class, //naam is b.v. een attribuut of variabele van klant
+            array('required' => false))
         ;
 		//zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types

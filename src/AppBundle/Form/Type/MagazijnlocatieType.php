@@ -27,9 +27,6 @@ class MagazijnlocatieType extends AbstractType
             ->add('artikelid', IntegerType::class, //naam is b.v. een attribuut of variabele van klant
             array('required' => false))
         ;
-        $builder->add('artikelid', IntegerType::class, array(
-            'required' => false
-        ));
     //zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types
 		//voor meer typen invoer

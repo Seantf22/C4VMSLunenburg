@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{asset('css/custom.css') }}" />
+        <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+
+
+<div class="container">
+    <a href="{{ path('home') }}"><img src={{asset('Images/Lunenburg.png')}}></a>
+        
+</div>
+    </head>
+

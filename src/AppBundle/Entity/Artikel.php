@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * artikel
@@ -38,14 +39,31 @@ class Artikel
     /**
      * @var string
      *
+<<<<<<< HEAD
      * @ORM\Column(name="magazijnlocatie", type="string", length=6)
+=======
+     * @ORM\Column(name="magazijnlocatie", type="string", length=255)
+     * 
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[0-20]\W{1}[a-zA-Z]{1}0[1-9]|1[0-0]+/")
+     * @Assert\Length(max="6")
+     * message="Your property should match ..."
+     * )
+>>>>>>> 8f1babaaebc887cb3b78fd6cccb703f84a0350dc
      */
+    //
     private $magazijnlocatie;
 
     /**
      * @var string
      *
      * @ORM\Column(name="inkoopprijs", type="decimal", precision=10, scale=2)
+          * @Assert\Range(
+     *      min = 0,
+     *      max = 9999,
+     *      minMessage = "Er mag geen negatief bedrag ingevuld worden",
+     *      maxMessage = "Weet u zeker dat dit het juiste bedrag is?"
+     * )
      */
     private $inkoopprijs;
 
@@ -67,6 +85,12 @@ class Artikel
      * @var int
      *
      * @ORM\Column(name="voorraad_aantal", type="integer")
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 9999,
+     *      minMessage = "Er kan geen negatieve voorraad ingevuld worden.",
+     *      maxMessage = "Is dit voorraad aantal het juiste?"
+     * )
      */
     private $voorraadAantal;
 

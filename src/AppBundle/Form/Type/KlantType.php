@@ -20,19 +20,23 @@ class KlantType extends AbstractType
             ->add('Klantnummer', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
         ;
         $builder
-            ->add('voornaam', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('voornaam', TextType::class,//naam is b.v. een attribuut of variabele van klant
+            array('required' => false))
         ;
         $builder
             ->add('achternaam', TextType::class) //naam is b.v. een attribuut of variabele van klant
         ;
         $builder
-            ->add('woonplaats', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('woonplaats', TextType::class, //naam is b.v. een attribuut of variabele van klant
+            array('required' => false))
         ;
         $builder
-            ->add('telefoonnummer', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('telefoonnummer', TextType::class, //naam is b.v. een attribuut of variabele van klant
+            array('required' => false))
         ;
         $builder
-            ->add('email', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('email', TextType::class, //naam is b.v. een attribuut of variabele van klant
+            array('required' => false))
         ;
 		//zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types
