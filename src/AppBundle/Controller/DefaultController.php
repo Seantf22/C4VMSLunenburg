@@ -34,7 +34,7 @@ class DefaultController extends Controller
      */
     public function home(Request $request)
     {
-        return $this->render('home.html.twig', [
+        return $this->render('base.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
