@@ -39,19 +39,8 @@ class Artikel
     /**
      * @var string
      *
-<<<<<<< HEAD
-     * @ORM\Column(name="magazijnlocatie", type="string", length=6)
-=======
      * @ORM\Column(name="magazijnlocatie", type="string", length=255)
-     * 
-     * @Assert\NotBlank()
-     * @Assert\Regex("/^[0-20]\W{1}[a-zA-Z]{1}0[1-9]|1[0-0]+/")
-     * @Assert\Length(max="6")
-     * message="Your property should match ..."
-     * )
->>>>>>> 8f1babaaebc887cb3b78fd6cccb703f84a0350dc
      */
-    //
     private $magazijnlocatie;
 
     /**

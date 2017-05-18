@@ -45,8 +45,23 @@ a {
     color: white;
 }
 
-.panel-footer
-{
+.panel-footer{
   text-align: center;
+}
+
+.kleurrood {
+  color:red;
+}
+.marge10{
+  margin:10px;
+}
+.marge100{
+  margin:100px;
+}
+.padding10{
+  padding:10px;
+}
+.bordergroove{
+border-style:groove;
 }
 

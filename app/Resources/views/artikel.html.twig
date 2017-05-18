@@ -5,11 +5,15 @@
 	<body><h1>Overzicht artikelen</h1></body>
 	<a href="{{ path('nieuweartikel') }}">Nieuw Artikel</a>
 	<br><br>
+
+
 	{% for artikel in artikel %}
 			<span class="kleurrood" class="marge10">
 				<a href="{{ path('artikelwijzigen',{'artikelnummer':artikel.artikelnummer}) }}">Wijzig</a>
 				<a href="{{ path('artikelverwijderen',{'artikelnummer':artikel.artikelnummer}) }}">Delete</a>
 				{{ artikel.artikelnummer }}
+		
+
 			</span>
 			<span class="marge10" >{{ artikel.omschrijving }}</span>
 			<span class="marge10" >{{ artikel.technischeSpecificaties }}</span>
