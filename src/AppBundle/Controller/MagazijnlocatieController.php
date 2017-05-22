@@ -11,7 +11,7 @@ use AppBundle\Entity\Magazijnlocatie;
 class MagazijnlocatieController extends Controller
 {
     /**
-     * @Route("/alle/magazijnlocatie", name="allemagazijnlocatie")
+     * @Route("/magazijnlocatie/alle", name="allemagazijnlocatie")
      */
     public function alleMagazijnlocatie(request $request) {
       $magazijnlocatie  = $this->getDoctrine()->getRepository("AppBundle:Magazijnlocatie")->findall();

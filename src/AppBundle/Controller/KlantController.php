@@ -11,7 +11,7 @@ use AppBundle\Entity\Klant;
 class KlantController extends Controller
 {
     /**
-     * @Route("/alle/klanten", name="alleklanten")
+     * @Route("/klant/alle", name="alleklanten")
      */
     public function alleKlanten(request $request) {
       $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findall();

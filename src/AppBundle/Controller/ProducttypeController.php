@@ -11,7 +11,7 @@ use AppBundle\Entity\ProductType;
 class ProducttypeController extends Controller
 {
     /**
-     * @Route("/alle/producttype", name="alleproducttype")
+     * @Route("/producttype/alle", name="alleproducttype")
      */
     public function alleProducttype(request $request) {
       $producttype = $this->getDoctrine()->getRepository("AppBundle:ProductType")->findall();

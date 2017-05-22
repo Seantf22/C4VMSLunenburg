@@ -11,7 +11,7 @@ use AppBundle\Entity\Artikel;
 class ArtikelController extends Controller
 {
     /**
-     * @Route("/alle/artikelen", name="alleartikelen")
+     * @Route("/artikel/alle", name="alleartikelen")
      */
     public function alleArtikelen(request $request) {
       $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findall();
