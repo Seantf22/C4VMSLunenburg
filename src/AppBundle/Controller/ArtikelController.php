@@ -67,7 +67,7 @@ class ArtikelController extends Controller
     public function verwijderArtikelBevestigen(Request $request, $artikelnummer) {
       $em = $this->getDoctrine()->getManager();
       $artikel = $em->getRepository("AppBundle:Artikel")->find($artikelnummer);
-      return new Response($this->renderView('bevestig.html.twig', array('artikel' => $artikel))); 
+      return new Response($this->renderView('bevestig.html.twig', array('artikel' => $artikel)));
     }
 
     /**
@@ -77,7 +77,8 @@ class ArtikelController extends Controller
       $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
       return new Response($this->renderView('eenproduct.html.twig', array('artikel' => $artikelen)));
     }
-/**
+
+    /**
     * @Route("/artikel/tekort", name="tekort")
     */
     public function teKort(request $request)
@@ -92,5 +93,4 @@ class ArtikelController extends Controller
       // return new Response($tekort);
       return new Response($this->renderView('artikeltekort.html.twig', array('tekort' => $tekort)));
     }
-
 }
