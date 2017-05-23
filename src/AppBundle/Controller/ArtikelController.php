@@ -77,6 +77,20 @@ class ArtikelController extends Controller
       $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
       return new Response($this->renderView('eenproduct.html.twig', array('artikel' => $artikelen)));
     }
+/**
+    * @Route("/artikel/tekort", name="tekort")
+    */
+    public function teKort(request $request)
+    {
+      $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findall();
+      $tekort = array();
+      foreach ($artikelen as $artikel) {
+        if($artikel->getVoorraadAantal() < $artikel->getMinimumVoorraad()){
+          array_push($tekort, $artikel);
+        }
+      }
+      // return new Response($tekort);
+      return new Response($this->renderView('artikeltekort.html.twig', array('tekort' => $tekort)));
+    }
 
-  
 }

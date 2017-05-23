@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+	<br><br>
+	<body><h1>Overzicht tekorten</h1></body>
+	<br><br>
+
+
+	{% for tekort in tekort %}
+			<span class="kleurrood" class="marge10">
+				{{ tekort.artikelnummer }}
+
+
+			</span>
+			<span class="marge10" >{{ tekort.omschrijving }}</span>
+			<span class="marge10" >{{ tekort.technischeSpecificaties }}</span>
+			<span class="marge10" >{{ tekort.magazijnlocatie }}</span>
+			<span class="marge10" >{{ tekort.inkoopprijs }}</span>
+			<span class="marge10" >{{ tekort.codeVervangendArtikel }}</span>
+			<span class="kleurrood" class="marge10">{{ tekort.minimumVoorraad }}</span>
+			<span class="kleurrood" class="marge10">{{ tekort.voorraadAantal }}</span>
+			<span class="marge10" >{{ tekort.bestelserie }}</span>
+			<br>
+	{% endfor %}
+	</div>
+
+{% endblock %}
