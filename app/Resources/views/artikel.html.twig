@@ -1,30 +1,44 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 <div class="container">
-	<br><br>
-	<body><h1>Overzicht artikelen</h1></body>
-	<a href="{{ path('nieuweartikel') }}">Nieuw Artikel</a>
-	<br><br>
+		<br><br>
+			<body><h1>Overzicht artikelen</h1></body>
+				<a href="{{ path('nieuweartikel') }}">Nieuw Artikel</a>
+		<br><br>
+</div>	
+<table>
+	<tbody>
+			<tr>
+				<td class="shrink"><b>artikelnummer</b></td>
+				<td class="shrink"><b>omschrijving</b></td>
+				<td class="shrink"><b>magazijnlocatie</b></td>
+				<td class="shrink"><b>inkoopprijs</b></td>
+				<td class="shrink1"><b>minimumVoorraad</b></td>
+				<td class="shrink1"><b>voorraadAantal</b></td>
+				<td class="shrink"><b>bestelserie</b></td>
+				<td class="shrink"><b>Wijzig</b></td>
+				<td class="shrink"><b>Verwijder</b></td>
+			</tr>
 
-
-	{% for artikel in artikel %}
-			<span class="kleurrood" class="marge10">
-				<a href="{{ path('artikelwijzigen',{'artikelnummer':artikel.artikelnummer}) }}">Wijzig</a>
-				<a href="{{ path('artikelverwijderen',{'artikelnummer':artikel.artikelnummer}) }}">Delete</a>
-				{{ artikel.artikelnummer }}
-		
-
-			</span>
-			<span class="marge10" >{{ artikel.omschrijving }}</span>
-			<span class="marge10" >{{ artikel.technischeSpecificaties }}</span>
-			<span class="marge10" >{{ artikel.magazijnlocatie }}</span>
-			<span class="marge10" >{{ artikel.inkoopprijs }}</span>
-			<span class="marge10" >{{ artikel.codeVervangendArtikel }}</span>
-			<span class="marge10" >{{ artikel.minimumVoorraad }}</span>
-			<span class="marge10" >{{ artikel.voorraadAantal }}</span>
-			<span class="marge10" >{{ artikel.bestelserie }}</span>
-			<br>
-	{% endfor %}
-	</div>
-
+		{% for artikel in artikel %}
+			<tr>
+				<td class="shrink"><a href="{{ path('toonArtikel',{'artikelnummer':artikel.artikelnummer}) }}">{{artikel.artikelnummer}}</a>
+				</td>
+				<td class="shrink">{{artikel.omschrijving}}</td>
+				<td class="shrink">{{artikel.magazijnlocatie}}</td>
+				<td class="shrink">{{artikel.inkoopprijs}}</td>
+				<td class="shrink">{{artikel.minimumVoorraad}}</td>
+				<td class="shrink">{{artikel.voorraadAantal}}</td>
+				<td class="shrink">{{artikel.bestelserie}}</td>
+				<td class="shrink">
+				<a href="{{ path('artikelwijzigen',{'artikelnummer':artikel.artikelnummer}) }}">Wijzig</a>			
+				</td>
+				<td class="shrink">
+				<a href="{{ path('artikelverwijderenbevestingen',{'artikelnummer':artikel.artikelnummer}) }}">Verwijder</a>
+			</tr>
+				
+ 		{% endfor %}
+	</tbody>
+</table>
 {% endblock %}
+

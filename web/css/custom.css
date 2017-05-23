@@ -33,6 +33,9 @@ a {
   background-color: red;
   color: white;
 }
+.active{
+  background-color: red;
+}
 
 .topnav a.active {
     background-color: red;
@@ -43,19 +46,27 @@ a {
   text-align: center;
 }
 
-.kleurrood {
-  color:red;
-}
-.marge10{
-  margin:10px;
-}
-.marge100{
-  margin:100px;
-}
-.padding10{
-  padding:10px;
-}
 .bordergroove{
 border-style:groove;
 }
 
+table {
+    border: 1px solid green;
+    border-collapse: collapse;
+    width:100%;
+}
+
+table td {
+    border: 1px solid green;
+}
+
+table td.shrink {
+    white-space:nowrap;
+}
+table td.shrink1 {
+    white-space:nowrap;
+    width:10%;
+}
+table td.expand {
+    width: 99%; 
+}

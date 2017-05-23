@@ -4,11 +4,19 @@
          <div class="container"> 
        
         <div class="topnav">
- 
-  
-  <a href="{{ path('alleartikelen') }}"  class="active">Alle Artikelen</a>
-  <a href="{{ path('allemagazijnlocatie') }}" >Alle magazijnlocatie</a>
-  </div>
+{% if app.request.get('_route') == 'alleartikelen' %}
+    <a href="{{ path('alleartikelen') }}" class="active">Alle artikelen</a>
+{% else %}
+    <a href="{{ path('alleartikelen') }}">Alle artikelen</a>   
+{% endif %}
+{% if app.request.get('_route') == 'allemagazijnlocatie' %}
+    <a href="{{ path('allemagazijnlocatie') }}" class="active">Alle Magazijnlocaties</a>
+{% else %}
+    <a href="{{ path('allemagazijnlocatie') }}">Alle Magazijnlocaties</a>
+{% endif %} 
+
+
+
 
   </div>
    
@@ -18,33 +26,7 @@
        
  {% endblock %}
 
-
-
       </div>
     </body>
       {% include 'footer.html.twig'%} 
-</html>
-<!-- 
-<style>
-.kleurrood {
-  color:red;
-}
-.marge10{
-  margin:10px;
-}
-.marge100{
-  margin:100px;
-}
-.padding10{
-  padding:10px;
-}
-.bordergroove{
-border-style:groove;
-}
-</style>
- <a href="{{ path('alleproducten') }}">Alle Producten</a>
-  
-  <a href="{{ path('alleproducttype') }}">Alle ProductType</a>
-  
-  <a href="{{ path('alleklanten') }}">Alle Klanten</a>
- -->
+

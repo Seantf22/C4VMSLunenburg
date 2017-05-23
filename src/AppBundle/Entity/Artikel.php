@@ -40,8 +40,14 @@ class Artikel
      * @var string
      *
      * @ORM\Column(name="magazijnlocatie", type="string", length=255)
+     * @Assert\Regex("/0[1-9]|1[0-0]\W{1}[a-zA-Z]{1}0[1-9]|1[0-0]$/")
+     * @Assert\Length(max="6")    
      */
     private $magazijnlocatie;
+
+    public function __toString() {
+        return $this->omschrijving;
+    }
 
     /**
      * @var string

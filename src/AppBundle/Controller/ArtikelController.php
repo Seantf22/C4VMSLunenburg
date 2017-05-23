@@ -60,4 +60,23 @@ class ArtikelController extends Controller
       $em->flush();
       return $this->redirect($this->generateurl("alleartikelen"));
     }
+
+    /**
+     * @Route("/artikel/verwijder/bevestig/{artikelnummer}", name="artikelverwijderenbevestingen")
+     */
+    public function verwijderArtikelBevestigen(Request $request, $artikelnummer) {
+      $em = $this->getDoctrine()->getManager();
+      $artikel = $em->getRepository("AppBundle:Artikel")->find($artikelnummer);
+      return new Response($this->renderView('bevestig.html.twig', array('artikel' => $artikel))); 
+    }
+
+    /**
+     * @Route("/artikel/toon/{artikelnummer}", name="toonArtikel")
+     */
+    public function toonArtikel(request $request, $artikelnummer) {
+      $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
+      return new Response($this->renderView('eenproduct.html.twig', array('artikel' => $artikelen)));
+    }
+
+  
 }

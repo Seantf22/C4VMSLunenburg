@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+ <div class="container"> 
+ <table>
+<tr>
+	<td> 
+		Artikelummer:
+		{{artikel.artikelnummer}}
+	</td>
+</tr>
+	<td> 
+		Omschrijving:
+		{{artikel.omschrijving}}
+	</td>
+</tr>
+<tr>
+	<td>
+		Technische Specificaties
+		{{artikel.technischeSpecificaties}}
+	</td>
+</tr>
+	<td> 
+		Magazijnlocatie:
+		{{artikel.magazijnlocatie}}
+	</td>
+</tr>
+<tr>
+	<td>
+		Inkoopprijs:
+		{{artikel.inkoopprijs}}
+	</td>
+</tr>
+<tr>
+	<td>
+		Vervangende Artikel:
+		{{artikel.codeVervangendArtikel}}
+	</td>
+</tr>
+	<td>
+		Minimumvoorraad
+		{{artikel.minimumVoorraad}}
+	</td>
+</tr>
+<tr>
+	<td>
+		Voorraad:
+		{{artikel.voorraadAantal}}
+	</td>
+</tr>
+<tr>
+	<td>
+		Bestelserie:
+		{{artikel.bestelserie}}
+	</td>
+</tr>
+</table>
+</div>
+{% endblock %}
+
