@@ -62,6 +62,7 @@ class ArtikelController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * @Route("/artikel/verwijder/bevestig/{artikelnummer}", name="artikelverwijderenbevestingen")
      */
     public function verwijderArtikelBevestigen(Request $request, $artikelnummer) {
@@ -79,4 +80,19 @@ class ArtikelController extends Controller
     }
 
   
+    /**
+    * @Route("/artikel/tekort", name="tekort")
+    */
+    public function teKort(request $request)
+    {
+      $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findall();
+      $tekort = array();
+      foreach ($artikelen as $artikel) {
+        if($artikel->getVoorraadAantal() < $artikel->getMinimumVoorraad()){
+          array_push($tekort, $artikel);
+        }
+      }
+      // return new Response($tekort);
+      return new Response($this->renderView('artikeltekort.html.twig', array('tekort' => $tekort)));
+    }
 }
