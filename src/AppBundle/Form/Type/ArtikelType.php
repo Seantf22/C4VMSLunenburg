@@ -53,6 +53,7 @@ class ArtikelType extends AbstractType
           // query choices from this entity
           'class' => 'AppBundle:Artikel',
           'choice_label' => 'artikelnummer',
+          'required' => false,
           ))
         ;
         $builder
