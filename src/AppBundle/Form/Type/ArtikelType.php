@@ -11,12 +11,14 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
+
 //EntiteitType vervangen door b.v. KlantType
 class ArtikelType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-      
+
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
         $builder
             ->add('artikelnummer', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
@@ -28,15 +30,30 @@ class ArtikelType extends AbstractType
             ->add('technischeSpecificaties', TextType::class, //naam is b.v. een attribuut of variabele van klant
             array('required' => false))
         ;
-        $builder
-            ->add('magazijnlocatie', TextType::class)
+        // $builder
+        //     ->add('magazijnlocatie', TextType::class)
+        // ;
+        $builder->add('magazijnlocatie', EntityType::class, array(
+          'class' => 'AppBundle:Magazijnlocatie',
+          'query_builder' => function (EntityRepository $er) {
+            return $er->createQueryBuilder('u')
+            ->where('u.artikelid is NULL');
+          },
+          'choice_label' => 'magazijnlocatie'
+          ))
         ;
         $builder
             ->add('inkoopprijs', MoneyType::class) //naam is b.v. een attribuut of variabele van klant
         ;
-        $builder
-            ->add('codeVervangendArtikel', IntegerType::class, //naam is b.v. een attribuut of variabele van klant
-            array('required' => false))
+        // $builder
+        //     ->add('codeVervangendArtikel', IntegerType::class, //naam is b.v. een attribuut of variabele van klant
+        //     array('required' => false))
+        // ;
+        $builder->add('codeVervangendArtikel', EntityType::class, array(
+          // query choices from this entity
+          'class' => 'AppBundle:Artikel',
+          'choice_label' => 'artikelnummer',
+          ))
         ;
         $builder
             ->add('minimumVoorraad', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
