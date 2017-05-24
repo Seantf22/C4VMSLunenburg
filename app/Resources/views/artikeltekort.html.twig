@@ -11,31 +11,25 @@
 	<tbody>
 
 			<tr>
-				<td class="shrink"><b>artikelnummer</b></td>
-				<td class="shrink"><b>omschrijving</b></td>
-				<td class="shrink"><b>magazijnlocatie</b></td>
-				<td class="shrink"><b>inkoopprijs</b></td>
-				<td class="shrink1"><b>Minumim Voorraad</b></td>
+				<td class="shrink"><b>Artikelnummer</b></td>
+				<td class="shrink"><b>Omschrijving</b></td>
+				<td class="shrink"><b>Magazijnlocatie</b></td>
+				<td class="shrink"><b>Inkoopprijs</b></td>
+				<td class="shrink1"><b>Minimum Voorraad</b></td>
 				<td class="shrink1"><b>Actuele voorraad</b></td>
-				<td class="shrink"><b>bestelserie</b></td>
-				<td class="shrink"><b>Wijzig</b></td>
-				<td class="shrink"><b>Verwijder</b></td>
+				<td class="shrink"><b>Bestelserie</b></td>
 			</tr>
 
 	{% for tekort in tekort %}
-			<td class="kleurrood" class="marge10">
-
-				<tr>
-			<td class="marge10" >{{ tekort.artikelnummer }}</b></td>
-			<td class="marge10" >{{ tekort.omschrijving }}</b></td>
-			<td class="marge10" >{{ tekort.technischeSpecificaties }}</b></td>
-			<td class="marge10" >{{ tekort.magazijnlocatie }}</b></td>
-			<td class="marge10" >{{ tekort.inkoopprijs }}</b></td>
-			<td class="marge10" >{{ tekort.codeVervangendArtikel }}</b></td>
-			<td class="kleurrood" class="marge10">{{ tekort.minimumVoorraad }}</b></td>
-			<td class="kleurrood" class="marge10">{{ tekort.voorraadAantal }}</b></td>
-			<td class="marge10" >{{ tekort.bestelserie }}</b></td>
-			<br>
+			<tr>
+				<td>{{ tekort.artikelnummer }}</td>
+				<td>{{ tekort.omschrijving }}</td>
+				<td>{{ tekort.magazijnlocatie }}</td>
+				<td>{{ tekort.inkoopprijs }}</td>
+				<td>{{ tekort.minimumVoorraad }}</td>
+				<td>{{ tekort.voorraadAantal }}</td>
+				<td>{{ tekort.bestelserie }}</td>
+				<br>
 			</tr>
 
 	{% endfor %}

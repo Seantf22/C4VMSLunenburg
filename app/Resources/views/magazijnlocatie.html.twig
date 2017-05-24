@@ -1,19 +1,32 @@
 {% extends 'base.html.twig' %}
 {% block body %}
- <div class="container"> 
+<div class="container">
 	<br><br>
 	<h1>Overzicht Magazijnlocatie</h1>
 	<a href="{{ path('nieuwemagazijnlocatie') }}">Nieuw Locatie</a>
 	<br><br>
-	{% for magazijnlocatie in magazijnlocatie %}
-			<span class="kleurrood" class="marge10">
-				<a href="{{ path('magazijnlocatiewijzigen',{'magazijnlocatie':magazijnlocatie.mid}) }}">Wijzig</a>
-
-				{{ magazijnlocatie.mid }}
-			</span>
-			<span class="marge10" >{{ magazijnlocatie.magazijnlocatie }}</span>
-			<span class="marge10" >{{ magazijnlocatie.artikelid }}</span>
-			<br>
-	{% endfor %}
 </div>
+
+<table>
+	<tbody>
+
+		<tr>
+			<td class="shrink"><b>ID</b></td>
+			<td class="shrink"><b>Locatie</b></td>
+      <td class="shrink"><b>Artikelnummer</b></td>
+			<td class="shrink"><b>Wijzig</b></td>
+		</tr>
+
+
+  {% for magazijnlocatie in magazijnlocatie %}
+    <tr>
+      <td>{{ magazijnlocatie.mid }}</td>
+			<td>{{ magazijnlocatie.magazijnlocatie }}</td>
+			<td>{{ magazijnlocatie.artikelid }}</td>
+      <td><a href="{{ path('magazijnlocatiewijzigen',{'magazijnlocatie':magazijnlocatie.mid}) }}">Wijzig</a></td>
+			<br>
+    </tr>
+	{% endfor %}
+  </tbody>
+</table>
 {% endblock %}
