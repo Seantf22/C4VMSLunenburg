@@ -94,11 +94,10 @@ class Artikel
     /**
      * @var int
      *
-     * @ORM\Column(name="code_vervangend_artikel", type="integer", nullable=true)
-     *
      * @ORM\OneToOne(targetEntity="Artikel")
      * @ORM\JoinColumn(name="code_vervangend_artikel", referencedColumnName="artikelnummer")
      */
+     // ORM\Column(name="code_vervangend_artikel", type="integer", nullable=true)
     private $codeVervangendArtikel;
 
     /**
