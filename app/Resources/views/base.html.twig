@@ -18,13 +18,7 @@
     <a href="{{ path('tekort') }}" class="active">Tekorten</a>
 {% else %}
     <a href="{{ path('tekort') }}">Tekorten</a>
-<<<<<<< HEAD
-{% endif %} 
-{ % else }
-    <a href="{{ logout_path('main') }}">Log uit</a>
-
-=======
-
+{% endif %}
 {% if app.request.get('_route') == 'allebestelformulieren' %}
     <a href="{{ path('allebestelformulieren') }}" class="active">Bestelformulieren</a>
 {% else %}
@@ -35,7 +29,8 @@
 {% else %}
     <a href="{{ path('search') }}">Zoek Artikel</a>
 {% endif %}
->>>>>>> a52cfba27870a8bc1f088782023c873d0c1c123e
+    <a href="{{ logout_path('main') }}">Log uit</a>
+
 
 
 
