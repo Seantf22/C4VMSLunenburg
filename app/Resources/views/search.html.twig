@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+ <div class="container">
+ <form method="post" action="">
+    {{ form_widget(form) }}
+    <input class="btn btn-default" value="zoeken" type="submit">
+    <a href="{{ path('search') }}">Annuleren</a>
+</form>
+</div>
+
+<table>
+	<tbody>
+			<tr>
+				<td class="shrink"><b>artikelnummer</b></td>
+				<td class="shrink"><b>omschrijving</b></td>
+				<td class="shrink"><b>magazijnlocatie</b></td>
+				<td class="shrink"><b>inkoopprijs</b></td>
+				<td class="shrink1"><b>minimumVoorraad</b></td>
+				<td class="shrink1"><b>voorraadAantal</b></td>
+				<td class="shrink"><b>bestelserie</b></td>
+				<td class="shrink"><b>Wijzig</b></td>
+				<td class="shrink"><b>Verwijder</b></td>
+			</tr>
+
+		{% for artikel in artikel %}
+			<tr>
+				<td class="shrink"><a href="{{ path('toonArtikel',{'artikelnummer':artikel.artikelnummer}) }}">{{artikel.artikelnummer}}</a>
+				</td>
+				<td class="shrink">{{artikel.omschrijving}}</td>
+				<td class="shrink">{{artikel.magazijnlocatie.magazijnlocatie}}</td>
+				<td class="shrink">{{artikel.inkoopprijs}}</td>
+				<td class="shrink">{{artikel.minimumVoorraad}}</td>
+				<td class="shrink">{{artikel.voorraadAantal}}</td>
+				<td class="shrink">{{artikel.bestelserie}}</td>
+				<td class="shrink">
+				<a href="{{ path('artikelwijzigen',{'artikelnummer':artikel.artikelnummer}) }}">Wijzig</a>
+				</td>
+				<td class="shrink">
+				<a href="{{ path('artikelverwijderenbevestingen',{'artikelnummer':artikel.artikelnummer}) }}">Verwijder</a>
+			</tr>
+
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
