@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -18,7 +19,6 @@ class Artikel
      *
      * @ORM\Column(name="artikelnummer", type="integer", unique=true)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $artikelnummer;
 
@@ -39,10 +39,39 @@ class Artikel
     /**
      * @var string
      *
-     * @ORM\Column(name="magazijnlocatie", type="string", length=255)
-     * @Assert\Regex("/0[1-9]|1[0-0]\W{1}[a-zA-Z]{1}0[1-9]|1[0-0]$/")
-     * @Assert\Length(max="6")    
+     * @ORM\OneToOne(targetEntity="Magazijnlocatie")
+     * @ORM\JoinColumn(name="magazijnlocatie", referencedColumnName="mid")
      */
+    //  * @ORM\Column(name="magazijnlocatie", type="string", length=255)
+    //  * @Assert\Length(
+	  //  *		min = 6,
+	  //  *		max = 6,
+	  //  *		exactMessage = "Invoerwaarde moet 6 characters groot zijn")
+    //  * @Assert\Regex(
+    //  *     pattern="/^[0-1]{1}[0-9]{1}|20\/[A-Z]{1}[0-9]|10{1}$/i",
+    //  *     match=true,
+    //  *     message="Gebruik de volgende structuur getal tot de 20 /eenletter getal tot de 10, Bijvoorbeeld de code 04/H07 ")
+    //  * @Assert\Regex(
+    //  *     pattern="/^[2]{1}[1-9]{1}\/[A-Z]{1}[0-9]{1}$/i",
+    //  *     match=false,
+    //  *     message="Het eerste getal mag niet hoger zijn dan 20 ")
+    //  * @Assert\Regex(
+    //  *     pattern="/^[3-9]{1}[0-9]{1}\/[A-Z]{1}[0-9]{1}$/i",
+    //  *     match=false,
+    //  *     message="Het eerste getal mag niet hoger zijn dan 20")
+    //  * @Assert\Regex(
+    //  *     pattern="/^[0-9]{2}\/[A-Z][1]{1}[1-9]{1}$/i",
+    //  *     match=false,
+    //  *     message="Het tweede getal mag niet hoger zijn dan 10")
+    //  * @Assert\Regex(
+    //  *     pattern="/^[0-9]{2}\/[A-Z][2-9]{1}[0-9]{1}$/i",
+    //  *     match=false,
+    //  *     message="Het tweede getal mag niet hoger zijn dan 10")
+    //  * @Assert\Regex(
+    //  *     pattern="/^[0-9A-Za-z]+$/i",
+    //  *     match=false,
+    //  *     message="Gebruik de volgende structuur getal tot de 20 /eenletter getal tot de 10")
+
     private $magazijnlocatie;
 
     public function __toString() {
@@ -65,8 +94,10 @@ class Artikel
     /**
      * @var int
      *
-     * @ORM\Column(name="code_vervangend_artikel", type="integer", nullable=true)
+     * @ORM\OneToOne(targetEntity="Artikel")
+     * @ORM\JoinColumn(name="code_vervangend_artikel", referencedColumnName="artikelnummer")
      */
+     // ORM\Column(name="code_vervangend_artikel", type="integer", nullable=true)
     private $codeVervangendArtikel;
 
     /**
@@ -95,6 +126,11 @@ class Artikel
      * @ORM\Column(name="bestelserie", type="integer")
      */
     private $bestelserie;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Bestelformulier", mappedBy="Artikel")
+     */
+    private $nummers;
 
     /**
      * Get id
@@ -321,4 +357,9 @@ class Artikel
     {
         return $this->bestelserie;
     }
+
+    public function __construct()
+        {
+          $this->nummers = new ArrayCollection();
+        }
 }

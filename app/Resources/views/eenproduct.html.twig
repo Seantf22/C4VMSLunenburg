@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
- <div class="container"> 
+ <div class="container">
  <table>
 <tr>
-	<td> 
+	<td>
 		Artikelummer:
 		{{artikel.artikelnummer}}
 	</td>
 </tr>
-	<td> 
+	<td>
 		Omschrijving:
 		{{artikel.omschrijving}}
 	</td>
@@ -19,9 +19,9 @@
 		{{artikel.technischeSpecificaties}}
 	</td>
 </tr>
-	<td> 
+	<td>
 		Magazijnlocatie:
-		{{artikel.magazijnlocatie}}
+		{{artikel.magazijnlocatie.magazijnlocatie}}
 	</td>
 </tr>
 <tr>
@@ -56,4 +56,3 @@
 </table>
 </div>
 {% endblock %}
-

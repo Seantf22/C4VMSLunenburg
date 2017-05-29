@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+	<br><br>
+	<h1>Bestelformulieren</h1>
+	<a href="{{ path('nieuwebestelformulier') }}">Nieuw Formulier</a>
+	<br><br>
+
+</div>
+
+<table>
+	<tbody>
+
+		<tr>
+			<td class="shrink"><b>ID</b></td>
+			<td class="shrink"><b>Leverancier</b></td>
+			<td class="shrink"><b>Bestelorder Nummer</b></td>
+			<td class="shrink"><b>Artikel Nummer</b></td>
+			<td class="shrink"><b>Omschrijving</b></td>
+			<td class="shrink"><b>Aantal Besteld</b></td>
+			<td class="shrink"><b>Wijzig</b></td>
+			<td class="shrink"><b>Verwijder</b></td>
+		</tr>
+
+	{% for bestelformulier in bestelformulier %}
+		<tr>
+			<td>{{ bestelformulier.bid }}</td>
+			<td>{{ bestelformulier.leverancier }}</td>
+			<td>{{ bestelformulier.bestelordernr }}</td>
+			<td>{{ bestelformulier.artikelnummer }}</td>
+			<td>{{ bestelformulier.omschrijving }}</td>
+			<td>{{ bestelformulier.besteldaantal }}</td>
+			<td><a href="{{ path('bestelformulierwijzigen',{'bid':bestelformulier.bid}) }}">Wijzig</a></td>
+			<td><a href="{{ path('bestelformulierverwijderen',{'bid':bestelformulier.bid}) }}">Verwijder</a></td>
+			<br>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
