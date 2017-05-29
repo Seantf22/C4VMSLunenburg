@@ -13,6 +13,12 @@ security:
                     admin:
                         password: $2y$12$bDX00WmJpmb1zBbmRMDOkeoVl3m8I2ZokRruNMROP1QFczIjlVov6
                         roles: 'ROLE_ADMIN'
+                    inkoper:
+                        password: inkoper
+                        roles: 'ROLE_INKOPER'
+                    magazijnbeheerder:
+                        password: magazijn
+                        roles: 'ROLE_MAGAZIJN'      
 
     encoders:
         Symfony\Component\Security\Core\User\User:
