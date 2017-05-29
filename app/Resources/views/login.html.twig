@@ -1,0 +1,27 @@
+{# app/Resources/views/security/login.html.twig #}
+{# ... you will probably extend your base template, like base.html.twig #}
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <p>Username: {{ app.user.username }}</p>
+{% endif %}
+
+{% if is_granted('ROLE_ADMIN') %}
+    <a href="...">Delete</a>
+{% endif %}
+
+{% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
+
+<form action="{{ path('login') }}" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="_password" />
+
+    <input type="hidden" name="_target_path" value="account" />
+    <input type="hidden" name="_failure_path" value="login" />
+
+    <input type="submit" name="login" />
+</form>
