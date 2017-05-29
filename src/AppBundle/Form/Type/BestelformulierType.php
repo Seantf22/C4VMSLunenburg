@@ -27,23 +27,23 @@ class BestelformulierType extends AbstractType
         $builder
             ->add('bestelordernr', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
         ;
-        $builder
-        ->add('artikelnummer', CollectionType::class, array(
-            'omschrijving' => EntityType::class,
-            'class' => 'AppBundle:Artikel',
-            'choice_label' => 'artikelnummer',
-            'label' => 'omschrijving'
-        ));
         // $builder
-        // ->add('artikelnummer', EntityType::class, array(
+        // ->add('artikelnummer', CollectionType::class, array(
+        //     'omschrijving' => EntityType::class,
         //     'class' => 'AppBundle:Artikel',
-        //     'choice_label' => 'artikelnummer'
-        // ))
-        // ->add('omschrijving',EntityType::class, array(
-        //     'class' => 'AppBundle:Artikel',
-        //     'choice_label' => 'omschrijving'
-        // ))
-        // ;
+        //     'choice_label' => 'artikelnummer',
+        //     'label' => 'omschrijving'
+        // ));
+        $builder
+        ->add('artikelnummer', EntityType::class, array(
+            'class' => 'AppBundle:Artikel',
+            'choice_label' => 'artikelnummer'
+        ))
+        ->add('omschrijving',EntityType::class, array(
+            'class' => 'AppBundle:Artikel',
+            'choice_label' => 'omschrijving'
+        ))
+        ;
         // $builder->add('omschrijving', EntityType::class, array(
         //     'class' => 'AppBundle:Artikel',
         //     'choice_label' => 'omschrijving'

@@ -41,9 +41,8 @@ class Bestelformulier
     private $artikelnummer;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="omschrijving", type="string", length=255)
+    *@ORM\ManyToOne(targetEntity="Artikel", inversedBy="nummers")
+    *@ORM\JoinColumn(name="omschrijving", referencedColumnName="omschrijving")
      */
     private $omschrijving;
 
