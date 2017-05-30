@@ -21,8 +21,6 @@
 {% else %}
     <a href="{{ path('tekort') }}">Tekorten</a>
 {% endif %}
-
-
 {% if app.request.get('_route') == 'allebestelformulieren' %}
     <a href="{{ path('allebestelformulieren') }}" class="active">Bestelformulieren</a>
 {% else %}
@@ -34,7 +32,6 @@
 {% else %}
     <a href="{{ path('search') }}">Zoek Artikel</a>
 {% endif %}
-
     <a href="{{ logout_path('main') }}">Log uit</a>
 
   </div>
