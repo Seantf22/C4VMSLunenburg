@@ -26,9 +26,18 @@ class ArtikelController extends Controller
       $form = $this->createForm(ArtikelForm::class, $nieuweArtikel);
       $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($nieuweArtikel);
+      $em = $this->getDoctrine()->getManager(); //maakt de entiteitsmanager
+
+      $em->persist($nieuweArtikel); //zet de nieuwe gegevens in de DB
       $em->flush();
+
+      $lokatieid = $nieuweArtikel->getMagazijnlocatie()->getMid(); //pakt de locatieID uit de nieuwe gegevens
+      $lokatie = $this->getDoctrine()->getRepository("AppBundle:Magazijnlocatie")->find($lokatieid); //zoekt de nieuwe locatie in de magazijntabel
+      $lokatie->setArtikelid($nieuweArtikel->getArtikelnummer()); //zet bij de nieuwe locatie het art.nr. uit de nieuwe gegevens
+
+      $em->persist($lokatie);
+      $em->flush();
+
       return $this->redirect($this->generateurl("nieuweartikel"));
     }
     return new Response($this->renderView('formartikel.html.twig', array('form' => $form->createView())));
@@ -41,13 +50,20 @@ class ArtikelController extends Controller
       $bestaandeartikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
       $form = $this->createForm(ArtikelForm::class, $bestaandeartikel);
       $form->handleRequest($request);
-    if ($form->isSubmitted() && $form->isValid()) {
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($bestaandeartikel);
-      $em->flush();
-      return $this->redirect($this->generateurl("artikelwijzigen", array("artikelnummer" => $bestaandeartikel->getArtikelnummer())));
-    }
-    return new Response($this->renderView('formartikel.html.twig', array('form' => $form->createView())));
+      if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($bestaandeartikel);
+        $em->flush();
+
+        $lokatieid = $bestaandeartikel->getMagazijnlocatie()->getMid();
+        $lokatie = $this->getDoctrine()->getRepository("AppBundle:Magazijnlocatie")->find($lokatieid);
+        $lokatie->setArtikelid($bestaandeartikel->getArtikelnummer());
+        $em->persist($lokatie);
+        $em->flush();
+
+        return $this->redirect($this->generateurl("artikelwijzigen", array("artikelnummer" => $bestaandeartikel->getArtikelnummer())));
+      }
+      return new Response($this->renderView('formartikel.html.twig', array('form' => $form->createView())));
     }
 
     /**
