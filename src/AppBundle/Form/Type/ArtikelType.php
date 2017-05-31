@@ -52,7 +52,9 @@ class ArtikelType extends AbstractType
         $builder->add('codeVervangendArtikel', EntityType::class, array(
           // query choices from this entity
           'class' => 'AppBundle:Artikel',
-          'choice_label' => 'artikelnummer',
+          'choice_label' => function ($artikel) {
+            return $artikel->getArtikelnummer() . ' ' . $artikel->getOmschrijving();
+          },
           'required' => false,
           ))
         ;
