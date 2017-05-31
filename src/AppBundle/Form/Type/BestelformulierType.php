@@ -18,9 +18,9 @@ class BestelformulierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
-        $builder
-            ->add('bid', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
-        ;
+        // $builder
+        //     ->add('bid', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
+        // ;
         $builder
             ->add('leverancier', TextType::class) //naam is b.v. een attribuut of variabele van klant
         ;
@@ -35,15 +35,18 @@ class BestelformulierType extends AbstractType
         //     'label' => 'omschrijving'
         // ));
         $builder
-        ->add('artikelnummer', EntityType::class, array(
+        ->add('artikel', EntityType::class, array(
             'class' => 'AppBundle:Artikel',
-            'choice_label' => 'artikelnummer'
-        ))
-        ->add('omschrijving',EntityType::class, array(
-            'class' => 'AppBundle:Artikel',
-            'choice_label' => 'omschrijving'
+            'choice_label' => function ($artikel) {
+              return $artikel->getArtikelnummer() . ' ' . $artikel->getOmschrijving();
+            }
         ))
         ;
+        // ->add('omschrijving',EntityType::class, array(
+        //     'class' => 'AppBundle:Artikel',
+        //     'choice_label' => 'omschrijving'
+        // ))
+        // ;
         // $builder->add('omschrijving', EntityType::class, array(
         //     'class' => 'AppBundle:Artikel',
         //     'choice_label' => 'omschrijving'

@@ -36,15 +36,15 @@ class Bestelformulier
 
     /**
     *@ORM\ManyToOne(targetEntity="Artikel", inversedBy="nummers")
-    *@ORM\JoinColumn(name="artikelnummer", referencedColumnName="artikelnummer")
+    *@ORM\JoinColumn(name="artikel", referencedColumnName="artikelnummer")
      */
-    private $artikelnummer;
+    private $artikel;
 
-    /**
-    *@ORM\ManyToOne(targetEntity="Artikel", inversedBy="nummers")
-    *@ORM\JoinColumn(name="omschrijving", referencedColumnName="omschrijving")
-     */
-    private $omschrijving;
+    // /**
+    // *@ORM\ManyToOne(targetEntity="Artikel", inversedBy="nummers")
+    // *@ORM\JoinColumn(name="omschrijving", referencedColumnName="omschrijving")
+    //  */
+    // private $omschrijving;
 
     /**
      * @var int
@@ -126,15 +126,15 @@ class Bestelformulier
     }
 
     /**
-     * Set artikelnummer
+     * Set artikel
      *
-     * @param integer $artikelnummer
+     * @param integer $artikel
      *
      * @return bestelformulier
      */
-    public function setArtikelnummer($artikelnummer)
+    public function setArtikel($artikel)
     {
-        $this->artikelnummer = $artikelnummer;
+        $this->artikel = $artikel;
 
         return $this;
     }
@@ -144,34 +144,34 @@ class Bestelformulier
      *
      * @return int
      */
-    public function getArtikelnummer()
+    public function getArtikel()
     {
-        return $this->artikelnummer;
+        return $this->artikel;
     }
 
-    /**
-     * Set omschrijving
-     *
-     * @param string $omschrijving
-     *
-     * @return Temp
-     */
-    public function setOmschrijving($omschrijving)
-    {
-        $this->omschrijving = $omschrijving;
-
-        return $this;
-    }
-
-    /**
-     * Get omschrijving
-     *
-     * @return string
-     */
-    public function getOmschrijving()
-    {
-        return $this->omschrijving;
-    }
+    // /**
+    //  * Set omschrijving
+    //  *
+    //  * @param string $omschrijving
+    //  *
+    //  * @return Temp
+    //  */
+    // public function setOmschrijving($omschrijving)
+    // {
+    //     $this->omschrijving = $omschrijving;
+    //
+    //     return $this;
+    // }
+    //
+    // /**
+    //  * Get omschrijving
+    //  *
+    //  * @return string
+    //  */
+    // public function getOmschrijving()
+    // {
+    //     return $this->omschrijving;
+    // }
 
     /**
      * Set besteldaantal
