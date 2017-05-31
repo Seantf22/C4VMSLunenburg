@@ -54,6 +54,13 @@ class Bestelformulier
     private $besteldaantal;
 
     /**
+    * @var \DateTime
+    *
+    * @ORM\Column(name="verwachteleverdatum" , type="datetime")
+    */
+    private $verwachteleverdatum;
+
+    /**
      * Set bid
      *
      * @param integer $bid
@@ -195,5 +202,28 @@ class Bestelformulier
     public function getBesteldaantal()
     {
         return $this->besteldaantal;
+    }
+    /**
+     * Set verwachteleverdatum
+     *
+     * @param \DateTime $verwachteleverdatum
+     *
+     * @return verwachteleverdatum
+     */
+    public function setVerwachteLeverdatum($verwachteleverdatum)
+    {
+        $this->verwachteleverdatum = $verwachteleverdatum;
+
+        return $this;
+    }
+
+    /**
+     * Get verwachteleverdatum
+     *
+     * @return \DateTime
+     */
+    public function getVerwachteleverdatum()
+    {
+        return $this->verwachteleverdatum;
     }
 }

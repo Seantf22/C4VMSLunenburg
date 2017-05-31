@@ -12,28 +12,19 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 //EntiteitType vervangen door b.v. KlantType
 class BestelformulierType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
-        // $builder
-        //     ->add('bid', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
-        // ;
         $builder
             ->add('leverancier', TextType::class) //naam is b.v. een attribuut of variabele van klant
         ;
         $builder
             ->add('bestelordernr', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
         ;
-        // $builder
-        // ->add('artikelnummer', CollectionType::class, array(
-        //     'omschrijving' => EntityType::class,
-        //     'class' => 'AppBundle:Artikel',
-        //     'choice_label' => 'artikelnummer',
-        //     'label' => 'omschrijving'
-        // ));
         $builder
         ->add('artikel', EntityType::class, array(
             'class' => 'AppBundle:Artikel',
@@ -42,18 +33,23 @@ class BestelformulierType extends AbstractType
             }
         ))
         ;
-        // ->add('omschrijving',EntityType::class, array(
-        //     'class' => 'AppBundle:Artikel',
-        //     'choice_label' => 'omschrijving'
-        // ))
-        // ;
-        // $builder->add('omschrijving', EntityType::class, array(
-        //     'class' => 'AppBundle:Artikel',
-        //     'choice_label' => 'omschrijving'
-        // ));
         $builder
             ->add('besteldaantal', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
         ;
+        $builder->add('verwachteleverdatum', DateType::class, array(
+          'widget' => 'choice',
+          'format' => 'dd-MM-yyy',
+          'placeholder' => array(
+            'day' => 'Dag', 'month' => 'Maand', 'year' => 'Jaar'),
+          'years' => array(
+            Date('Y') => Date('Y'),
+            Date('Y') + 1 => Date('Y') + 1,
+            Date('Y') + 2 => Date('Y') + 2,
+            Date('Y') + 3 => Date('Y') + 3,
+            Date('Y') + 4 => Date('Y') + 4,
+          )
+          ))
+          ;
 		//zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types
 		//voor meer typen invoer

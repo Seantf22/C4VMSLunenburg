@@ -18,6 +18,7 @@
 			<td class="shrink"><b>Artikel Nummer</b></td>
 			<td class="shrink"><b>Omschrijving</b></td>
 			<td class="shrink"><b>Aantal Besteld</b></td>
+			<td class="shrink"><b>Verwachte Leverdatum</b></td>
 			<td class="shrink"><b>Wijzig</b></td>
 			<td class="shrink"><b>Verwijder</b></td>
 		</tr>
@@ -30,6 +31,7 @@
 			<td>{{ bestelformulier.artikel.artikelnummer }}</td>
 			<td>{{ bestelformulier.artikel.omschrijving }}</td>
 			<td>{{ bestelformulier.besteldaantal }}</td>
+			<td>{{ bestelformulier.verwachteleverdatum|date('d-m-Y') }}</td>
 			<td><a href="{{ path('bestelformulierwijzigen',{'bid':bestelformulier.bid}) }}">Wijzig</a></td>
 			<td><a href="{{ path('bestelformulierverwijderen',{'bid':bestelformulier.bid}) }}">Verwijder</a></td>
 		</tr>
