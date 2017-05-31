@@ -19,6 +19,12 @@ class Artikel
      *
      * @ORM\Column(name="artikelnummer", type="integer", unique=true)
      * @ORM\Id
+           * @Assert\Range(
+      *      min = 10,
+      *      max = 10,
+      *      minMessage = "Vul altijd 10 nummers in",
+      *      maxMessage = "Vul altijd 10 nummers in"
+      * )
      */
     private $artikelnummer;
 
@@ -33,6 +39,12 @@ class Artikel
      * @var string
      *
      * @ORM\Column(name="technische_specificaties", type="string", length=255, nullable=true)
+     * @Assert\Range(
+*      min = 1,
+*      max = 255,
+*      minMessage = "Vul altijd 1 karakter in",
+*      maxMessage = "U kunt maximaal 255 karakters invullen"
+* )
      */
     private $technischeSpecificaties;
 
@@ -41,7 +53,16 @@ class Artikel
      *
      * @ORM\OneToOne(targetEntity="Magazijnlocatie")
      * @ORM\JoinColumn(name="magazijnlocatie", referencedColumnName="mid")
+     * @Assert\Range(
+*      min = 1,
+*      max = 255,
+*      minMessage = "Vul altijd 1 karakter in",
+*      maxMessage = "U kunt maximaal 255 karakters invullen"
+* )
      */
+
+
+
     //  * @ORM\Column(name="magazijnlocatie", type="string", length=255)
     //  * @Assert\Length(
 	  //  *		min = 6,
@@ -104,6 +125,12 @@ class Artikel
      * @var int
      *
      * @ORM\Column(name="minimum_voorraad", type="integer")
+     * @Assert\Range(
+*      min = 10,
+*      max = 10,
+*      minMessage = "Vul altijd 10 nummers in",
+*      maxMessage = "Vul altijd 10 nummers in"
+* )
      */
     private $minimumVoorraad;
 
@@ -129,6 +156,12 @@ class Artikel
 
     /**
      * @ORM\OneToMany(targetEntity="Bestelformulier", mappedBy="Artikel")
+     * @Assert\Range(
+     *      min = 5,
+     *      max = 5,
+     *      minMessage = "vul altijd 5 nummer in.",
+     *      maxMessage = "vul altijd 5 nummers in."
+     * )
      */
     private $nummers;
 
@@ -138,7 +171,7 @@ class Artikel
      * @ORM\Column(name="active", type="integer")
      */
     private $active;
-    
+
 
 public function setActive($active)
 {
