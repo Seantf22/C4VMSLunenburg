@@ -132,6 +132,28 @@ class Artikel
      */
     private $nummers;
 
+        /**
+     * @var int
+     *
+     * @ORM\Column(name="active", type="integer")
+     */
+    private $active;
+    
+
+public function setActive($active)
+{
+    $this->active = $active;
+
+    return $this;
+}
+
+public function getActive(){
+    return $this->active;
+}
+
+
+
+
     /**
      * Get id
      *

@@ -14,7 +14,8 @@ class ArtikelController extends Controller
      * @Route("/artikel/alle", name="alleartikelen")
      */
     public function alleArtikelen(request $request) {
-      $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findall();
+      //$active = 0;  
+      $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findBy(array('active' => 1));
       return new Response($this->renderView('artikel.html.twig', array('artikel' => $artikelen)));
     }
 
@@ -30,7 +31,7 @@ class ArtikelController extends Controller
 
       $em->persist($nieuweArtikel); //zet de nieuwe gegevens in de DB
       $em->flush();
-
+      $nieuweArtikel->setActive(1);
       $lokatieid = $nieuweArtikel->getMagazijnlocatie()->getMid(); //pakt de locatieID uit de nieuwe gegevens
       $lokatie = $this->getDoctrine()->getRepository("AppBundle:Magazijnlocatie")->find($lokatieid); //zoekt de nieuwe locatie in de magazijntabel
       $lokatie->setArtikelid($nieuweArtikel->getArtikelnummer()); //zet bij de nieuwe locatie het art.nr. uit de nieuwe gegevens
@@ -72,7 +73,7 @@ class ArtikelController extends Controller
     public function verwijderArtikel(Request $request, $artikelnummer) {
       $em = $this->getDoctrine()->getManager();
       $bestaandeartikel = $em->getRepository("AppBundle:Artikel")->find($artikelnummer);
-      $em->remove($bestaandeartikel);
+      $bestaandeartikel->setActive(0);
       $em->flush();
       return $this->redirect($this->generateurl("alleartikelen"));
     }
