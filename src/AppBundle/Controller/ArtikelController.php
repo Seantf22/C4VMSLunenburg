@@ -74,6 +74,9 @@ class ArtikelController extends Controller
       $em = $this->getDoctrine()->getManager();
       $bestaandeartikel = $em->getRepository("AppBundle:Artikel")->find($artikelnummer);
       $bestaandeartikel->setActive(0);
+           $lokatieid = $bestaandeartikel->getMagazijnlocatie()->getMid();
+      $lokatie = $this->getDoctrine()->getRepository("AppBundle:Magazijnlocatie")->find($lokatieid);
+      $lokatie->setArtikelid(NULL);
       $em->flush();
       return $this->redirect($this->generateurl("alleartikelen"));
     }

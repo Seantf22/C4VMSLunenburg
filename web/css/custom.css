@@ -10,11 +10,14 @@ a {
 
 .container{
 	text-align: center;
+  margin:0; 
 
 }
 .topnav {
   overflow: hidden;
   background-color: black;
+  text-align: center;
+  padding: 14px 16px;
 
 
 }
@@ -54,6 +57,7 @@ table {
     border: 1px solid green;
     border-collapse: collapse;
     width:100%;
+
 }
 
 table td {
@@ -69,4 +73,8 @@ table td.shrink1 {
 }
 table td.expand {
     width: 99%; 
+}
+
+li{
+      list-style:none;
 }

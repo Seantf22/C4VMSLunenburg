@@ -1,12 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<div class="container">
 		<br><br>
 			<body><h1>Weet u zeker dat u het artikel wilt verwijderen?</h1></body>
 				
 				<a href="{{ path('artikelverwijderen', {'artikelnummer':artikel.artikelnummer}) }}">Ja</a>
 				<a href="javascript:history.back()">Nee</a>
 		<br><br>
-		</div>
 {% endblock %}
 

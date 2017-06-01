@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<div class="container">
+
 		<br><br>
 			<body><h1>Overzicht artikelen</h1></body>
 				<a href="{{ path('nieuweartikel') }}">Nieuw Artikel</a>
 		<br><br>
-</div>
 <table>
 	<tbody>
 			<tr>
@@ -40,4 +39,5 @@
  		{% endfor %}
 	</tbody>
 </table>
+
 {% endblock %}
