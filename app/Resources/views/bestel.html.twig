@@ -18,13 +18,13 @@
 		<tr>
 			<td class="shrink"><b>ID</b></td>
 			<td class="shrink"><b>Leverancier</b></td>
-			<td class="shrink"><b>Bestelorder Nummer</b></td>
-			<td class="shrink"><b>Artikel Nummer</b></td>
+			<td class="shrink"><b>Bestelordernummer</b></td>
+			<td class="shrink"><b>Artikelnummer</b></td>
 			<td class="shrink"><b>Omschrijving</b></td>
-			<td class="shrink"><b>Aantal Besteld</b></td>
-			<td class="shrink"><b>Verwachte Leverdatum</b></td>
+			<td class="shrink"><b>Aantal besteld</b></td>
+			<td class="shrink"><b>Verwachte leverdatum</b></td>
 			<td class="shrink"><b>Wijzig</b></td>
-			<td class="shrink"><b>Verwijder</b></td>
+			<td class="shrink"><b>Archiveer</b></td>
 		</tr>
 
 	{% for bestel in bestel %}
@@ -37,7 +37,7 @@
 			<td>{{ bestel.besteldaantal }}</td>
 			<td>{{ bestel.verwachteleverdatum|date('d-m-Y') }}</td>
 			<td><a href="{{ path('bestelformulierwijzigen',{'bid':bestel.bid}) }}">Wijzig</a></td>
-			<td><a href="{{ path('bestelformulierverwijderen',{'bid':bestel.bid}) }}">Verwijder</a></td>
+			<td><a href="{{ path('bestelformulierverwijderen',{'bid':bestel.bid}) }}">Archiveer</a></td>
 		</tr>
 	{% endfor %}
 	</tbody>

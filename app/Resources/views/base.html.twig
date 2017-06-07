@@ -5,9 +5,9 @@
 
         <div class="topnav">
 {% if app.request.get('_route') == 'alleartikelen' %}
-    <a href="{{ path('alleartikelen') }}" class="active">Alle artikelen</a>
+    <a href="{{ path('alleartikelen') }}" class="active">Assortiment</a>
 {% else %}
-    <a href="{{ path('alleartikelen') }}">Alle artikelen</a>
+    <a href="{{ path('alleartikelen') }}">Assortiment</a>
 {% endif %}
 
 {% if app.request.get('_route') == 'allemagazijnlocatie' %}
