@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Form\Type\SearchForm;
 use AppBundle\Entity\Artikel;
+use AppBundle\Form\Type\BestelForm;
 
 
 class SearchController extends Controller
@@ -34,11 +35,31 @@ class SearchController extends Controller
     //var_dump($articles);
     return new Response($this->renderView('search.html.twig', array( 'artikel' => $articles,'form' => $form->createView())));
   }
-}
+
 // OR a.magazijnlocatie = :title
 
+     /**
+     * @Route("/searchBestelformulier", name="searchbestel")
+     */
 
+  public function bestelQuery(Request $request)
+  {
+    $form = $this->createForm(BestelForm::class);
+    $form->handleRequest($request);
+    $title = $form->get('searching')->getData();
 
+    $em = $this->getDoctrine()->getManager();
+    $query1 = $em->createQuery('
+        Select a FROM AppBundle:Bestelformulier a
+        WHERE a.leverancier LIKE :title OR a.bestelordernr LIKE :title 
+      
+
+      ')->setParameter('title', '%'. $title .'%');
+    $bestelling = $query1->getResult();
+    //var_dump($articles);
+    return new Response($this->renderView('bestel.html.twig', array( 'bestel' => $bestelling,'form' => $form->createView())));
+  }
+}
 
 
 

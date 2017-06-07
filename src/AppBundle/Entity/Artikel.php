@@ -20,12 +20,6 @@ class Artikel
      * @ORM\Column(name="artikelnummer", type="text", unique=true)
      * @ORM\Id
      *
-     * @Assert\Range(
-     *      min = 10,
-     *      max = 11,
-    *      minMessage = "Het artikelnummer moet 10 cijfers zijn.",
-     *      maxMessage = "Het artikelnummer moet 10 cijfers zijn."
-     * )
      */
      
     private $artikelnummer;
@@ -61,14 +55,7 @@ class Artikel
      *
      * @ORM\Column(name="inkoopprijs", type="decimal", precision=10, scale=2)
      */
-       /**
-     * @Assert\Range(
-     *      min = 0,
-     *      max = 10000,
-     *      minMessage = "De waarde moet minimaal 0 euro zijn",
-     *      maxMessage = "Weet u zeker dat het juiste bedrag is ingevuld?"
-     * )
-     */
+
     private $inkoopprijs;
 
     /**
@@ -85,29 +72,12 @@ class Artikel
      *
      * @ORM\Column(name="minimum_voorraad", type="integer")
      */
-        /**
-     * @Assert\Range(
-     *      min = 0,
-     *      max = 1000000,
-     *      minMessage = "Het getal mag niet negatief zijn.",
-     *      maxMessage = "Wellicht is dit aantal te hoog?"
-     * )
-     */
-
     private $minimumVoorraad;
 
     /**
      * @var int
      *
      * @ORM\Column(name="voorraad_aantal", type="integer")
-     */
-            /**
-     * @Assert\Range(
-     *      min = 0,
-     *      max = 1000000,
-     *      minMessage = "Het getal mag niet negatief zijn.",
-     *      maxMessage = "Wellicht is dit aantal te hoog?"
-     * )
      */
     private $voorraadAantal;
 
@@ -122,14 +92,7 @@ class Artikel
     /**
      * @ORM\OneToMany(targetEntity="Bestelformulier", mappedBy="Artikel")
      */
-             /**
-     * @Assert\Range(
-     *      min = 0,
-     *      max = 5,
-     *      minMessage = "Het getal mag niet negatief zijn.",
-     *      maxMessage = "Wellicht is dit aantal te hoog?"
-     * )
-     */
+            
     private $nummers;
 
         /**

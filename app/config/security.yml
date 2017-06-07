@@ -5,35 +5,35 @@ security:
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
-            memory: 
+            memory:
                 users:
                     administrator:
                         password: $2y$12$EKd0bsTLyWe9s28Jpo0MAe9Z0aazz8CHzACP6QalgJVMxhPvVZwL.
                         # wachtwoord = admin1
-                        roles: 'ROLE_USER, ROLE_ADMIN'
+                        roles: 'ROLE_ADMIN'
                     inkoper:
                         password: $2y$12$07O611L3z15IueCNMzMDDuH33oP7Kqx3Hc617xfgGwApJN7O4r5Z6
                         # wachtwoord = inkoper1
                         roles: 'ROLE_INKOPER'
-                    magazijnmeester:
+                    magazijn:
                         password: $2y$12$ihyyiITk0OSNRbzKuSIhxOf83F0sKY57dJh5ZiHw7mZLnJPZK2KKm
                         # wachtwoord = magazijn1
-                        roles: 'ROLE_MAGAZIJN'   
+                        roles: 'ROLE_MAGAZIJNMEESTER'
                     verkoper:
                         password: $2y$12$/Q7wRSc/v3OnIbTmrpL52u7xcEFTGCqvH0WSnDJ/wzX7v9EQOKWOK
                         # wachtwoord = verkoper1
-                        roles: 'ROLE_VERKOPER'     
+                        roles: 'ROLE_VERKOPER'
                     user:
                         password: $2y$12$yn.PSur5hQSWSPRByHE4i.rVdaOQ4OyJiJpO/NETqR/GcrPPkhWGG
                         # wachtwoord = user1
-                        roles: 'ROLE_USER'    
+                        roles: 'ROLE_USER'
 
-    role_hierarchy: 
-        ROLE_ADMIN: [ROLE_USER, ROLE_MAGAZIJN, ROLE_VERKOPER, ROLE_INKOPER]
-        ROLE_INKOPER: [ROLE_INKOPER]
-        ROLE_MAGAZIJN: [ROLE_MAGAZIJN]
-        ROLE_VERKOPER: [ROLE_VERKOPER]
-        ROLE_USER: [ROLE_USER]
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_ADMIN, ROLE_IEDEREEN, ROLE_ARTIKELALLE, ROLE_ARTIKELNIEUW, ROLE_ARTIKELWIJZIG, ROLE_ARTIKELVERWIJDER, ROLE_ARTIKELTOON, ROLE_TEKORT, ROLE_BESTELALLE, ROLE_BESTELNIEUW, ROLE_BESTELWIJZIG, ROLE_BESTELVERWIJDER, ROLE_MAGAZIJNLOCALLE, ROLE_MAGAZIJNLOCNIEUW , ROLE_MAGAZIJNLOCWIJZIG, ROLE_SEARCHARTI, ROLE_SEARCHBESTEL]
+        ROLE_INKOPER: [ROLE_IEDEREEN, ROLE_ARTIKELALLE, ROLE_ARTIKELNIEUW, ROLE_ARTIKELWIJZIG, ROLE_ARTIKELVERWIJDER, ROLE_ARTIKELTOON, ROLE_BESTELALLE, ROLE_BESTELNIEUW, ROLE_BESTELWIJZIG, ROLE_MAGAZIJNLOCALLE, ROLE_TEKORT, ROLE_SEARCHARTI, ROLE_SEARCHBESTEL]
+        ROLE_MAGAZIJNMEESTER: [ROLE_IEDEREEN, ROLE_MAGAZIJNLOCALLE, ROLE_ARTIKELALLE, ROLE_ARTIKELWIJZIG, ROLE_ARTIKELTOON, ROLE_SEARCHARTI]
+        ROLE_VERKOPER: [ROLE_IEDEREEN, ROLE_ARTIKELTOON, ROLE_SEARCHARTI]
+        ROLE_USER: [ROLE_IEDEREEN]
 
     encoders:
         Symfony\Component\Security\Core\User\User:
@@ -43,14 +43,25 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/magazijnlocatie/alle, roles: ROLE_MAGAZIJN }
-        - { path: ^/alle/bestelformulier, roles: ROLE_MAGAZIJN }
-        - { path: ^/artikel/tekort, roles: ROLE_INKOPER }
-        - { path: ^/searchArtikel, roles: ROLE_INKOPER }
-        - { path: ^/alle/bestelformulier, roles: ROLE_VERKOPER }
-        - { path: ^/artikel/alle, roles: ROLE_VERKOPER }
-        - { path: ^/artikel/tekort, roles: ROLE_VERKOPER }
-       
+        - { path: ^/Home, roles: ROLE_IEDEREEN}
+        - { path: ^/artikel/alle, roles: ROLE_ARTIKELALLE }
+        - { path: ^/artikel/nieuw, roles: ROLE_ARTIKELNIEUW }
+        - { path: ^/artikel/wijzig, roles: ROLE_ARTIKELWIJZIG }
+        - { path: ^/artikel/verwijder, roles: ROLE_ARTIKELVERWIJDER }
+        - { path: ^/artikel/toon, roles: ROLE_ARTIKELTOON }
+        - { path: ^/artikel/tekort, roles: ROLE_TEKORT }
+        - { path: ^/alle/bestelformulier, roles: ROLE_BESTELALLE }
+        - { path: ^/bestelformulier/nieuw, roles: ROLE_BESTELNIEUW }
+        - { path: ^/bestelformulier/wijzig, roles: ROLE_BESTELWIJZIG }
+        - { path: ^/bestelformulier/verwijder, roles: ROLE_BESTELVERWIJDER }
+        - { path: ^/magazijnlocatie/alle, roles: ROLE_MAGAZIJNLOCALLE }
+        - { path: ^/magazijnlocatie/nieuw, roles: ROLE_MAGAZIJNLOCNIEUW }
+        - { path: ^/magazijnlocatie/wijzig, roles: ROLE_MAGAZIJNLOCWIJZIG }
+        - { path: ^/searchArtikel, roles: ROLE_SEARCHARTI }
+        - { path: ^/searchBestelformulier, roles: ROLE_SEARCHBESTEL }
+
+
+
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs

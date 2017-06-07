@@ -21,7 +21,7 @@
 
 	{% for tekort in tekort %}
 			<tr>
-				<td>{{ tekort.artikelnummer }}</td>
+				<td><a href="{{ path('toonArtikel',{'artikelnummer':tekort.artikelnummer}) }}">{{ tekort.artikelnummer }}</td><a/>
 				<td>{{ tekort.omschrijving }}</td>
 				<td>{{ tekort.magazijnlocatie.magazijnlocatie }}</td>
 				<td>{{ tekort.inkoopprijs }}</td>

@@ -32,6 +32,11 @@
 {% else %}
     <a href="{{ path('search') }}">Zoek Artikel</a>
 {% endif %}
+{% if app.request.get('_route') == 'searchbestel' %}
+    <a href="{{ path('searchbestel') }}" class="active">Zoek bestelling</a>
+{% else %}
+    <a href="{{ path('searchbestel') }}">Zoek bestelling</a>
+{% endif %}
     <a href="{{ logout_path('main') }}">Log uit</a>
 
   </div>
