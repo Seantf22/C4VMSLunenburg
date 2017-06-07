@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+	<br><br>
+	<h1>Retouren</h1>
+	<a href="{{ path('nieuwretour') }}">Nieuw retour</a>
+	<br><br>
+
+</div>
+
+<table>
+	<tbody>
+
+		<tr>
+			<td class="shrink"><b>Retournummer</b></td>
+			<td class="shrink"><b>Artikelnummer</b></td>
+			<td class="shrink"><b>Omschrijving</b></td>
+			<td class="shrink"><b>Aantal</b></td>
+			<td class="shrink"><b>Verwachte leverdatum</b></td>
+			<td class="shrink"><b>Wijzig</b></td>
+			<td class="shrink"><b>Archiveer</b></td>
+		</tr>
+
+	{% for retour in retouren %}
+		<tr>
+			<td>{{ retour.retournummer }}</td>
+			<td>{{ retour.artikel.artikelnummer }}</td>
+			<td>{{ retour.artikel.omschrijving }}</td>
+			<td>{{ retour.aantal }}</td>
+			<td>{{ retour.verwachteleverdatum|date('d-m-Y') }}</td>
+			<td><a href="{{ path('retourwijzigen',{'retournummer':retour.retournummer}) }}">Wijzig</a></td>
+			<td><a href="{{ path('retourwijzigen',{'retournummer':retour.retournummer}) }}">Archiveer</a></td>
+
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
