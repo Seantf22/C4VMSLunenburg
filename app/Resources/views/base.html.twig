@@ -27,6 +27,13 @@
     <a href="{{ path('allebestelformulieren') }}">Bestelformulieren</a>
 {% endif %}
 
+{% if app.request.get('_route') == 'alleretouren' %}
+    <a href="{{ path('alleretouren') }}" class="active">Retouren</a>
+{% else %}
+    <a href="{{ path('alleretouren') }}">Retouren</a>
+{% endif %}
+
+
 {% if app.request.get('_route') == 'search' %}
     <a href="{{ path('search') }}" class="active">Zoek Artikel</a>
 {% else %}
