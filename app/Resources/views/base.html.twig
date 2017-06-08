@@ -1,20 +1,18 @@
-
+    <div class="container">
 {% include 'header.html.twig'%}
     <body>
-
-
         <div class="topnav">
 {% if app.request.get('_route') == 'alleartikelen' %}
-    <a href="{{ path('alleartikelen') }}" class="active">Alle artikelen</a>
-{% else %}
-    <a href="{{ path('alleartikelen') }}">Alle artikelen</a>
-{% endif %}
+      <a href="{{ path('alleartikelen') }}" class="active">Assortiment</a>
+    {% else %}
+      <a href="{{ path('alleartikelen') }}">Assortiment</a>
+    {% endif %}
 
 {% if app.request.get('_route') == 'allemagazijnlocatie' %}
-    <a href="{{ path('allemagazijnlocatie') }}" class="active">Alle Magazijnlocaties</a>
-{% else %}
-    <a href="{{ path('allemagazijnlocatie') }}">Alle Magazijnlocaties</a>
-{% endif %}
+      <a href="{{ path('allemagazijnlocatie') }}" class="active">Alle Magazijnlocaties</a>
+    {% else %}
+      <a href="{{ path('allemagazijnlocatie') }}">Alle Magazijnlocaties</a>
+    {% endif %}
 
 {% if app.request.get('_route') == 'tekort' %}
     <a href="{{ path('tekort') }}" class="active">Tekorten</a>
@@ -26,7 +24,23 @@
 {% else %}
     <a href="{{ path('search') }}">Zoek Artikel</a>
 {% endif %}
-    <a href="{{ logout_path('main') }}">Log uit</a>
+{% if app.request.get('_route') == 'alleretouren' %}
+    <a href="{{ path('alleretouren') }}" class="active">Retouren</a>
+{% else %}
+    <a href="{{ path('alleretouren') }}">Retouren</a>
+{% endif %}
+{% if app.request.get('_route') == 'nieuwebestelformulier' %}
+    <a href="{{ path('nieuwebestelformulier') }}" class="active">Bestel formulier</a>
+{% else %}
+    <a href="{{ path('nieuwebestelformulier') }}">Bestel formulier</a>
+{% endif %}
+{% if app.request.get('_route') == 'alleBestelFormulieren' %}
+    <a href="{{ path('alleBestelFormulieren') }}" class="active">Overzicht bestellingen</a>
+{% else %}
+    <a href="{{ path('alleBestelFormulieren') }}">Overzicht bestellingen</a>
+{% endif %}
+
+      <a href="{{ logout_path('main') }}">Log uit</a>
 
   </div>
 
@@ -37,4 +51,5 @@
 
       </div>
     </body>
+
       {% include 'footer.html.twig'%}

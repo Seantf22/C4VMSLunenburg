@@ -60,9 +60,17 @@ class ArtikelType extends AbstractType
         ;
         $builder
             ->add('minimumVoorraad', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('minimumVoorraad', IntegerType::class, array(
+                //'widget' => 'single_text',
+                'label'  => 'Minimumvoorraad',
+              ))
         ;
         $builder
             ->add('voorraadAantal', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('voorraadAantal', IntegerType::class, array(
+                //'widget' => 'single_text',
+                'label'  => 'Actuele voorraad',
+              ))
         ;
         $builder
             ->add('bestelserie', IntegerType::class) //naam is b.v. een attribuut of variabele van klant

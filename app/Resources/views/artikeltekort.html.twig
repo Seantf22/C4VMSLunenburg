@@ -14,9 +14,10 @@
 				<td class="shrink"><b>Omschrijving</b></td>
 				<td class="shrink"><b>Magazijnlocatie</b></td>
 				<td class="shrink"><b>Inkoopprijs</b></td>
-				<td class="shrink1"><b>Minimum Voorraad</b></td>
+				<td class="shrink1"><b>Minimumvoorraad</b></td>
 				<td class="shrink1"><b>Actuele voorraad</b></td>
 				<td class="shrink"><b>Bestelserie</b></td>
+				<td class="shrink"><b>Bestellen</b></td>
 			</tr>
 
 	{% for tekort in tekort %}
@@ -28,6 +29,7 @@
 				<td>{{ tekort.minimumVoorraad }}</td>
 				<td>{{ tekort.voorraadAantal }}</td>
 				<td>{{ tekort.bestelserie }}</td>
+				<td><a href="{{ path('toonArtikel',{'artikelnummer':tekort.artikelnummer}) }}">Bestel</td><a/>
 			</tr>
 
 	{% endfor %}

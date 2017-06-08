@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
- <div class="container">
+ <div>
  <br></br>
  	<h1>Zoek artikel</h1>
  <form method="post" action="">
@@ -13,15 +13,15 @@
 <table>
 	<tbody>
 			<tr>
-				<td class="shrink"><b>artikelnummer</b></td>
-				<td class="shrink"><b>omschrijving</b></td>
-				<td class="shrink"><b>magazijnlocatie</b></td>
-				<td class="shrink"><b>inkoopprijs</b></td>
-				<td class="shrink1"><b>minimumVoorraad</b></td>
-				<td class="shrink1"><b>voorraadAantal</b></td>
-				<td class="shrink"><b>bestelserie</b></td>
+				<td class="shrink"><b>Artikelnummer</b></td>
+				<td class="shrink"><b>Omschrijving</b></td>
+				<td class="shrink"><b>Magazijnlocatie</b></td>
+				<td class="shrink"><b>Inkoopprijs</b></td>
+				<td class="shrink1"><b>Minimumvoorraad</b></td>
+				<td class="shrink1"><b>Actuele voorraad</b></td>
+				<td class="shrink"><b>Bestelserie</b></td>
 				<td class="shrink"><b>Wijzig</b></td>
-				<td class="shrink"><b>Verwijder</b></td>
+				<td class="shrink"><b>Archiveer</b></td>
 			</tr>
 
 		{% for artikel in artikel %}
@@ -38,7 +38,7 @@
 				<a href="{{ path('artikelwijzigen',{'artikelnummer':artikel.artikelnummer}) }}">Wijzig</a>
 				</td>
 				<td class="shrink">
-				<a href="{{ path('artikelverwijderenbevestingen',{'artikelnummer':artikel.artikelnummer}) }}">Verwijder</a>
+				<a href="{{ path('artikelverwijderenbevestingen',{'artikelnummer':artikel.artikelnummer}) }}">Archiveer</a>
 			</tr>
 
     {% endfor %}

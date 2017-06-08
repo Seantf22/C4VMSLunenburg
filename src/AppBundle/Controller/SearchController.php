@@ -38,27 +38,7 @@ class SearchController extends Controller
 
 // OR a.magazijnlocatie = :title
 
-     /**
-     * @Route("/searchBestelformulier", name="searchbestel")
-     */
 
-  public function bestelQuery(Request $request)
-  {
-    $form = $this->createForm(BestelForm::class);
-    $form->handleRequest($request);
-    $title = $form->get('searching')->getData();
-
-    $em = $this->getDoctrine()->getManager();
-    $query1 = $em->createQuery('
-        Select a FROM AppBundle:Bestelformulier a
-        WHERE a.leverancier LIKE :title OR a.bestelordernr LIKE :title 
-      
-
-      ')->setParameter('title', '%'. $title .'%');
-    $bestelling = $query1->getResult();
-    //var_dump($articles);
-    return new Response($this->renderView('bestel.html.twig', array( 'bestel' => $bestelling,'form' => $form->createView())));
-  }
 }
 
 
