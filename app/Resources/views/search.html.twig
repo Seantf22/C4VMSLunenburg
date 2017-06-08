@@ -20,6 +20,7 @@
 				<td class="shrink1"><b>Minimumvoorraad</b></td>
 				<td class="shrink1"><b>Actuele voorraad</b></td>
 				<td class="shrink"><b>Bestelserie</b></td>
+        <td class="shrink"><b>Status</b></td>
 				<td class="shrink"><b>Wijzig</b></td>
 				<td class="shrink"><b>Archiveer</b></td>
 			</tr>
@@ -34,6 +35,7 @@
 				<td class="shrink">{{artikel.minimumVoorraad}}</td>
 				<td class="shrink">{{artikel.voorraadAantal}}</td>
 				<td class="shrink">{{artikel.bestelserie}}</td>
+        <td class="shrink">{{artikel.Active}}</td>
 				<td class="shrink">
 				<a href="{{ path('artikelwijzigen',{'artikelnummer':artikel.artikelnummer}) }}">Wijzig</a>
 				</td>
