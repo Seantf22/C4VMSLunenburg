@@ -32,7 +32,8 @@ class BestelArtikel
     /**
      * @var int
      *
-     * @ORM\Column(name="Artikelnummer", type="integer", unique=true)
+     * @ORM\ManyToOne(targetEntity="Artikel", inversedBy="nummers")
+     * @ORM\JoinColumn(name="artikelnummer", referencedColumnName="artikelnummer")
      */
     private $artikelnummer;
 
@@ -84,4 +85,3 @@ class BestelArtikel
         return $this->bestelordernummer;
     }
 }
-

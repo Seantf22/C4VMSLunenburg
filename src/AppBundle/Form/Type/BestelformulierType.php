@@ -29,8 +29,6 @@ class BestelFormulierType extends AbstractType
             Date('Y') => Date('Y'),
             Date('Y') + 1 => Date('Y') + 1,
             Date('Y') + 2 => Date('Y') + 2,
-            Date('Y') + 3 => Date('Y') + 3,
-            Date('Y') + 4 => Date('Y') + 4,
           )
           ))
           ;

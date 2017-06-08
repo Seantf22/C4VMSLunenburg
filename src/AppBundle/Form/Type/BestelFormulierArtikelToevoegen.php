@@ -20,8 +20,13 @@ class BestelFormulierArtikelToevoegen extends AbstractType
         //         $builder
         //     ->add('Bestelordernummer', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
         // ;
-                $builder
-            ->add('Artikelnummer', TextType::class) //naam is b.v. een attribuut of variabele van klant
+        $builder
+        ->add('artikelnummer', EntityType::class, array(
+            'class' => 'AppBundle:Artikel',
+            'choice_label' => function ($artikel) {
+              return $artikel->getArtikelnummer() . ' ' . $artikel->getOmschrijving();
+            }
+        ))
         ;
     }
 

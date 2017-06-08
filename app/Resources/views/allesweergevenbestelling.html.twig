@@ -10,7 +10,8 @@
 		{% for bestelling in bestelling %}
 			<tr>
 			<td>{{bestelling.Bestelordernummer}}</td>
-			<td>{{bestelling.artikelnummer}}</td>
+			<td>{{bestelling.artikelnummer.artikelnummer}}</td>
+			<td>{{bestelling.artikelnummer.omschrijving}}</td>
 			</tr>
 
  		{% endfor %}
