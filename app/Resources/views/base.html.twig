@@ -9,20 +9,15 @@
     {% endif %}
 
 {% if app.request.get('_route') == 'allemagazijnlocatie' %}
-      <a href="{{ path('allemagazijnlocatie') }}" class="active">Alle Magazijnlocaties</a>
+      <a href="{{ path('allemagazijnlocatie') }}" class="active">Magazijnlocaties</a>
     {% else %}
-      <a href="{{ path('allemagazijnlocatie') }}">Alle Magazijnlocaties</a>
+      <a href="{{ path('allemagazijnlocatie') }}">Magazijnlocaties</a>
     {% endif %}
 
 {% if app.request.get('_route') == 'tekort' %}
     <a href="{{ path('tekort') }}" class="active">Tekorten</a>
 {% else %}
     <a href="{{ path('tekort') }}">Tekorten</a>
-{% endif %}
-{% if app.request.get('_route') == 'search' %}
-    <a href="{{ path('search') }}" class="active">Zoek Artikel</a>
-{% else %}
-    <a href="{{ path('search') }}">Zoek Artikel</a>
 {% endif %}
 {% if app.request.get('_route') == 'alleretouren' %}
     <a href="{{ path('alleretouren') }}" class="active">Retouren</a>
@@ -38,6 +33,11 @@
     <a href="{{ path('alleBestelFormulieren') }}" class="active">Overzicht bestellingen</a>
 {% else %}
     <a href="{{ path('alleBestelFormulieren') }}">Overzicht bestellingen</a>
+{% endif %}
+{% if app.request.get('_route') == 'search' %}
+    <a href="{{ path('search') }}" class="active">Zoek Artikel</a>
+{% else %}
+    <a href="{{ path('search') }}">Zoek Artikel</a>
 {% endif %}
 
       <a href="{{ logout_path('main') }}">Log uit</a>
