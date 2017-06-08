@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<table>
+	<tbody>
+			<tr>
+				<td class="shrink"><b>Bestelordernummer</b></td>
+				<td class="shrink"><b>Artikelnummer</b></td>
+			</tr>
+
+		{% for bestelling in bestelling %}
+			<tr>
+			<td>{{bestelling.Bestelordernummer}}</td>
+			<td>{{bestelling.artikelnummer}}</td>
+			</tr>
+
+ 		{% endfor %}
+	</tbody>
+</table>
+
+</form>
+{% endblock %}

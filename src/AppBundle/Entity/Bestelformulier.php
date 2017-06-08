@@ -5,225 +5,93 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * bestelformulier
+ * BestelFormulier
+ *
  * @ORM\Table(name="bestelformulier")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\bestelformulierRepository")
  */
-class Bestelformulier
+class BestelFormulier
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="bid", type="integer", unique=true)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $bid;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="leverancier", type="string", length=255)
-     */
-    private $leverancier;
+    private $id;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="bestelordernr", type="integer")
+     * @ORM\Column(name="Bestelordernummer", type="integer", unique=true)
      */
-    private $bestelordernr;
+    private $bestelordernummer;
 
     /**
-    *@ORM\ManyToOne(targetEntity="Artikel", inversedBy="nummers")
-    *@ORM\JoinColumn(name="artikel", referencedColumnName="artikelnummer")
-     */
-    private $artikel;
-
-    // /**
-    // *@ORM\ManyToOne(targetEntity="Artikel", inversedBy="nummers")
-    // *@ORM\JoinColumn(name="omschrijving", referencedColumnName="omschrijving")
-    //  */
-    // private $omschrijving;
-
-    /**
-     * @var int
+     * @var \DateTime
      *
-     * @ORM\Column(name="besteldaantal", type="integer")
+     * @ORM\Column(name="Leverdatum", type="datetime")
      */
-    private $besteldaantal;
+    private $leverdatum;
+
 
     /**
-    * @var \DateTime
-    *
-    * @ORM\Column(name="verwachteleverdatum" , type="datetime")
-    */
-    private $verwachteleverdatum;
-
-    /**
-     * Set bid
-     *
-     * @param integer $bid
-     *
-     * @return bestelformulier
-     */
-    public function setBid($bid)
-    {
-        $this->bid = $bid;
-
-        return $this;
-    }
-
-    /**
-     * Get bid
+     * Get id
      *
      * @return int
      */
-    public function getBid()
+    public function getId()
     {
-        return $this->bid;
+        return $this->id;
     }
 
     /**
-     * Set leverancier
+     * Set bestelordernummer
      *
-     * @param string $leverancier
+     * @param integer $bestelordernummer
      *
-     * @return bestelformulier
+     * @return BestelFormulier
      */
-    public function setLeverancier($leverancier)
+    public function setBestelordernummer($bestelordernummer)
     {
-        $this->leverancier = $leverancier;
+        $this->bestelordernummer = $bestelordernummer;
 
         return $this;
     }
 
     /**
-     * Get leverancier
-     *
-     * @return string
-     */
-    public function getLeverancier()
-    {
-        return $this->leverancier;
-    }
-
-    /**
-     * Set bestelordernr
-     *
-     * @param integer $bestelordernr
-     *
-     * @return bestelformulier
-     */
-    public function setBestelordernr($bestelordernr)
-    {
-        $this->bestelordernr = $bestelordernr;
-
-        return $this;
-    }
-
-    /**
-     * Get bestelordernr
+     * Get bestelordernummer
      *
      * @return int
      */
-    public function getBestelordernr()
+    public function getBestelordernummer()
     {
-        return $this->bestelordernr;
+        return $this->bestelordernummer;
     }
 
     /**
-     * Set artikel
+     * Set leverdatum
      *
-     * @param integer $artikel
+     * @param \DateTime $leverdatum
      *
-     * @return bestelformulier
+     * @return BestelFormulier
      */
-    public function setArtikel($artikel)
+    public function setLeverdatum($leverdatum)
     {
-        $this->artikel = $artikel;
+        $this->leverdatum = $leverdatum;
 
         return $this;
     }
 
     /**
-     * Get artikelnummer
-     *
-     * @return int
-     */
-    public function getArtikel()
-    {
-        return $this->artikel;
-    }
-
-    // /**
-    //  * Set omschrijving
-    //  *
-    //  * @param string $omschrijving
-    //  *
-    //  * @return Temp
-    //  */
-    // public function setOmschrijving($omschrijving)
-    // {
-    //     $this->omschrijving = $omschrijving;
-    //
-    //     return $this;
-    // }
-    //
-    // /**
-    //  * Get omschrijving
-    //  *
-    //  * @return string
-    //  */
-    // public function getOmschrijving()
-    // {
-    //     return $this->omschrijving;
-    // }
-
-    /**
-     * Set besteldaantal
-     *
-     * @param integer $besteldaantal
-     *
-     * @return bestelformulier
-     */
-    public function setBesteldaantal($besteldaantal)
-    {
-        $this->besteldaantal = $besteldaantal;
-
-        return $this;
-    }
-
-    /**
-     * Get besteldaantal
-     *
-     * @return int
-     */
-    public function getBesteldaantal()
-    {
-        return $this->besteldaantal;
-    }
-    /**
-     * Set verwachteleverdatum
-     *
-     * @param \DateTime $verwachteleverdatum
-     *
-     * @return verwachteleverdatum
-     */
-    public function setVerwachteLeverdatum($verwachteleverdatum)
-    {
-        $this->verwachteleverdatum = $verwachteleverdatum;
-
-        return $this;
-    }
-
-    /**
-     * Get verwachteleverdatum
+     * Get leverdatum
      *
      * @return \DateTime
      */
-    public function getVerwachteleverdatum()
+    public function getLeverdatum()
     {
-        return $this->verwachteleverdatum;
+        return $this->leverdatum;
     }
 }
+

@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Form\Type\SearchForm;
 use AppBundle\Entity\Artikel;
-use AppBundle\Form\Type\BestelForm;
+
 
 
 class SearchController extends Controller

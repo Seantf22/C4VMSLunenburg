@@ -10,33 +10,17 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-
 //EntiteitType vervangen door b.v. KlantType
-class BestelformulierType extends AbstractType
+class BestelFormulierType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('leverancier', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('Bestelordernummer', TextType::class) //naam is b.v. een attribuut of variabele van klant
         ;
-        $builder
-            ->add('bestelordernr', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
-        ;
-        $builder
-        ->add('artikel', EntityType::class, array(
-            'class' => 'AppBundle:Artikel',
-            'choice_label' => function ($artikel) {
-              return $artikel->getArtikelnummer() . ' ' . $artikel->getOmschrijving();
-            }
-        ))
-        ;
-        $builder
-            ->add('besteldaantal', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
-        ;
-        $builder->add('verwachteleverdatum', DateType::class, array(
+        $builder->add('Leverdatum', DateType::class, array(
           'widget' => 'choice',
           'format' => 'dd-MM-yyy',
           'placeholder' => array(
@@ -50,15 +34,12 @@ class BestelformulierType extends AbstractType
           )
           ))
           ;
-		//zie
-		//http://symfony.com/doc/current/forms.html#built-in-field-types
-		//voor meer typen invoer
     }
 
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => 'AppBundle\Entity\Bestelformulier', //Entiteit vervangen door b.v. Klant
+			'data_class' => 'AppBundle\Entity\BestelFormulier', //Entiteit vervangen door b.v. Klant
 		));
 	}
 }

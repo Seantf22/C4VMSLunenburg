@@ -89,11 +89,6 @@ class Artikel
 
     private $bestelserie;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Bestelformulier", mappedBy="Artikel")
-     */
-            
-    private $nummers;
 
         /**
      * @var int

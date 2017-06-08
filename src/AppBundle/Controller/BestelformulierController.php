@@ -5,59 +5,60 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Form\Type\BestelformulierType as BestelformulierForm;
-use AppBundle\Entity\Bestelformulier;
+use AppBundle\Form\Type\BestelFormulierType;
+use AppBundle\Entity\BestelFormulier;
+use AppBundle\Entity\BestelArtikel;
+use AppBundle\Form\Type\BestelFormulierArtikelToevoegen;
 
-class BestelformulierController extends Controller
+class BestelFormulierController extends Controller
 {
-    /**
-     * @Route("/alle/bestelformulier", name="allebestelformulieren")
-     */
-    public function alleBestelformulieren(request $request) {
-      $bestelformulieren = $this->getDoctrine()->getRepository("AppBundle:Bestelformulier")->findall();
-      return new Response($this->renderView('bestelformulier.html.twig', array('bestelformulier' => $bestelformulieren)));
-    }
+
 
     /**
      * @Route("/bestelformulier/nieuw", name="nieuwebestelformulier")
      */
-    public function nieuweBestelformulier(Request $request) {
-      $nieuweBestelformulier = new Bestelformulier();
-      $form = $this->createForm(BestelformulierForm::class, $nieuweBestelformulier);
+     public function nieuweBestelformulier(Request $request) { 
+      $bestelformulier = new bestelformulier();
+      $form = $this->createForm(BestelFormulierType::class, $bestelformulier);
       $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
       $em = $this->getDoctrine()->getManager();
-      $em->persist($nieuweBestelformulier);
+      $em->persist($bestelformulier);
       $em->flush();
       return $this->redirect($this->generateurl("nieuwebestelformulier"));
     }
-    return new Response($this->renderView('formbestelformulier.html.twig', array('form' => $form->createView())));
+    return new Response($this->renderView('bestelformulier.html.twig', array('form' => $form->createView())));
     }
 
     /**
-     * @Route("/bestelformulier/wijzig/{bid}", name="bestelformulierwijzigen")
+     * @Route("/bestelformulier/weergeven", name="alleBestelFormulieren")
      */
-    public function wijzigBestelformulier(Request $request, $bid) {
-      $bestaandebestelformulier = $this->getDoctrine()->getRepository("AppBundle:Bestelformulier")->find($bid);
-      $form = $this->createForm(BestelformulierForm::class, $bestaandebestelformulier);
+    public function alleBestelFormulieren(Request $request) { 
+      $weergevenbestelformulier = $this->getDoctrine()->getRepository("AppBundle:BestelFormulier")->findall();
+      return new Response($this->renderView('bestelformulierweergeven.html.twig', array('bestelformulier' => $weergevenbestelformulier))); 
+    }
+
+        /**
+     * @Route("/artikelbestellen/{bestelordernummer}", name="bestelNieuwArtikel")
+     */
+     public function bestelNieuwArtikel(Request $request, $bestelordernummer) { 
+      $BestelArtikel = new BestelArtikel();
+       $form = $this->createForm(BestelFormulierArtikelToevoegen::class, $BestelArtikel);
       $form->handleRequest($request);
-    if ($form->isSubmitted() && $form->isValid()) {
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($bestaandebestelformulier);
-      $em->flush();
-      return $this->redirect($this->generateurl("bestelformulierwijzigen", array("bid" => $bestaandebestelformulier->getBid())));
+      if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+              $BestelArtikel->setBestelordernummer($bestelordernummer);
+        $em->persist($BestelArtikel);
+        $em->flush();
+       }
+      return new Response($this->renderView('bestelformulierArtikel.html.twig', array('form' => $form->createView())));
     }
-    return new Response($this->renderView('formbestelformulier.html.twig', array('form' => $form->createView())));
+    /**
+     * @Route("/bestelling/weergeven/{bestelordernummer}", name="bestelling")
+     */
+    public function bestellingweergeven(Request $request, $bestelordernummer) { 
+      $bestelling = $this->getDoctrine()->getRepository("AppBundle:BestelArtikel")->findBy(array('bestelordernummer'=>$bestelordernummer));
+      return new Response($this->renderView('allesweergevenbestelling.html.twig', array('bestelling' => $bestelling))); 
     }
 
-    /**
-     * @Route("/bestelformulier/verwijder/{bid}", name="bestelformulierverwijderen")
-     */
-    public function verwijderBestelformulier(Request $request, $bid) {
-      $em = $this->getDoctrine()->getManager();
-      $bestaandebestelformulier = $em->getRepository("AppBundle:Bestelformulier")->find($bid);
-      $em->remove($bestaandebestelformulier);
-      $em->flush();
-      return $this->redirect($this->generateurl("allebestelformulieren"));
-    }
-}
+  }

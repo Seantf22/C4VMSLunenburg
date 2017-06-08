@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<table>
+	<tbody>
+			<tr>
+				<td class="shrink"><b>Bestelordernummer</b></td>
+				<td class="shrink"><b>leverdatum</b></td>
+			</tr>
+
+		{% for bestelformulier in bestelformulier %}
+			<tr>
+			<td><a href="{{ path('bestelNieuwArtikel',{'bestelordernummer':bestelformulier.bestelordernummer}) }}">{{ bestelformulier.Bestelordernummer }}</a></td>
+			<td>{{ bestelformulier.Leverdatum|date('d-m-Y') }}</td>
+			</tr>
+
+ 		{% endfor %}
+	</tbody>
+</table>
+
+</form>
+{% endblock %}

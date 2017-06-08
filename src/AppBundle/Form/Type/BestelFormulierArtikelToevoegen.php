@@ -11,21 +11,24 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 //EntiteitType vervangen door b.v. KlantType
-class BestelForm extends AbstractType
+class BestelFormulierArtikelToevoegen extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
-        $builder
-            ->add('searching', TextType::class) //naam is b.v. een attribuut of variabele van klant
-   ;
-   }
+        //         $builder
+        //     ->add('Bestelordernummer', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
+        // ;
+                $builder
+            ->add('Artikelnummer', TextType::class) //naam is b.v. een attribuut of variabele van klant
+        ;
+    }
 
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => 'AppBundle\Entity\Search', //Entiteit vervangen door b.v. Klant
+			'data_class' => 'AppBundle\Entity\BestelArtikel', //Entiteit vervangen door b.v. Klant
 		));
 	}
 }
