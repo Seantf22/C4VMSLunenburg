@@ -12,8 +12,6 @@ use AppBundle\Form\Type\BestelFormulierArtikelToevoegen;
 
 class BestelFormulierController extends Controller
 {
-
-
     /**
      * @Route("/bestelformulier/nieuw", name="nieuwebestelformulier")
      */
@@ -54,7 +52,7 @@ class BestelFormulierController extends Controller
       return new Response($this->renderView('bestelformulierArtikel.html.twig', array('form' => $form->createView())));
     }
     /**
-     * @Route("/bestelling/weergeven/{bestelordernummer}", name="bestelling")
+     * @Route("/bestelling/weergeven/{bestelordernummer}", name="bestellingWeergeven")
      */
     public function bestellingweergeven(Request $request, $bestelordernummer) { 
       $bestelling = $this->getDoctrine()->getRepository("AppBundle:BestelArtikel")->findBy(array('bestelordernummer'=>$bestelordernummer));
