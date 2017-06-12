@@ -29,7 +29,8 @@
 				<td>{{ tekort.minimumVoorraad }}</td>
 				<td>{{ tekort.voorraadAantal }}</td>
 				<td>{{ tekort.bestelserie }}</td>
-				<td><a href="{{ path('toonArtikel',{'artikelnummer':tekort.artikelnummer}) }}">Bestel</a></td>
+				<td><a href="{{ path('tekortbestellen')}}">Bestel</a></td>
+				<!-- <td><a href="{{ path('toonArtikel',{'artikelnummer':tekort.artikelnummer}) }}">Bestel</a></td> -->
 			</tr>
 
 	{% endfor %}

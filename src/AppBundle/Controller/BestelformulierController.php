@@ -9,6 +9,7 @@ use AppBundle\Form\Type\BestelFormulierType;
 use AppBundle\Entity\BestelFormulier;
 use AppBundle\Entity\BestelArtikel;
 use AppBundle\Form\Type\BestelFormulierArtikelToevoegen;
+use AppBundle\Form\Type\SelectBestelform;
 
 class BestelFormulierController extends Controller
 {
@@ -57,6 +58,30 @@ class BestelFormulierController extends Controller
     public function bestellingweergeven(Request $request, $bestelordernummer) {
       $bestelling = $this->getDoctrine()->getRepository("AppBundle:BestelArtikel")->findBy(array('bestelordernummer'=>$bestelordernummer));
       return new Response($this->renderView('allesweergevenbestelling.html.twig', array('bestelling' => $bestelling)));
+    }
+
+    /**
+    * @Route("/tekorten/bestellen/", name="tekortbestellen")
+    */
+    public function tekortBestellen(Request $request)
+    {
+      $BestelFormulier = new BestelFormulier();
+      $form = $this->createForm(SelectBestelform::class, $BestelFormulier);
+      $form->handleRequest($request);
+      if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        //$bestelling = $BestelFormulier->getBestelordernummer();
+        $bestelling = $BestelFormulier->getBestelordernummer()->getBestelordernummer();
+        print_r($bestelling);
+        return $this->redirect("/artikelbestellen/$bestelling");
+        //return $this->redirect($this->generateurl("{{ path('bestelNieuwArtikel',{'bestelordernummer':$bestelling}) }}");
+        //echo $form;
+        //print_r($form->getBestelordernummer());
+
+
+       }
+      return new Response($this->renderView('bestelformulierArtikel.html.twig', array('form' => $form->createView())));
     }
 
   }
