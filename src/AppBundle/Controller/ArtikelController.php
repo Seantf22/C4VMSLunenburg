@@ -14,7 +14,7 @@ class ArtikelController extends Controller
      * @Route("/artikel/alle", name="alleartikelen")
      */
     public function alleArtikelen(request $request) {
-      //$active = 0;  
+      //$active = 0;
       $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findBy(array('active' => 1));
       return new Response($this->renderView('artikel.html.twig', array('artikel' => $artikelen)));
     }
@@ -61,7 +61,6 @@ class ArtikelController extends Controller
         $lokatie->setArtikelid($bestaandeartikel->getArtikelnummer());
         $em->persist($lokatie);
         $em->flush();
-
         return $this->redirect($this->generateurl("artikelwijzigen", array("artikelnummer" => $bestaandeartikel->getArtikelnummer())));
       }
       return new Response($this->renderView('formartikel.html.twig', array('form' => $form->createView())));

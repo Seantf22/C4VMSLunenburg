@@ -30,7 +30,7 @@ class RetourType extends AbstractType
 
         $builder->add('verwachteleverdatum', DateType::class, array(
           'widget' => 'choice',
-          'format' => 'dd-MM-yyy',
+          'format' => 'dd-MMMM-yyy',
           'placeholder' => array(
             'day' => 'Dag', 'month' => 'Maand', 'year' => 'Jaar'),
           'years' => array(

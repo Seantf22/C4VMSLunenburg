@@ -11,15 +11,13 @@
 				<td class="shrink"><b>Bestelordernummer</b></td>
 				<td class="shrink"><b>leverdatum</b></td>
 				<td class="shrink"><b>Artikel toevoegen</b></td>
-				<td class="shrink"><b>Bestelling tonen</b></td>
 			</tr>
 
 		{% for bestelformulier in bestelformulier %}
 			<tr>
-			<td>{{ bestelformulier.Bestelordernummer }}</td>
+			<td><a href="{{ path('bestellingWeergeven',{'bestelordernummer':bestelformulier.bestelordernummer}) }}">{{ bestelformulier.Bestelordernummer }}</a></td>
 			<td>{{ bestelformulier.Leverdatum|date('d-m-Y') }}</td>
 			<td><a href="{{ path('bestelNieuwArtikel',{'bestelordernummer':bestelformulier.bestelordernummer}) }}">Artikel toevoegen</td></a>
-			<td><a href="{{ path('bestellingWeergeven',{'bestelordernummer':bestelformulier.bestelordernummer}) }}">Bestelling tonen</td></a>
 			</tr>
 
  		{% endfor %}

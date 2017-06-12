@@ -35,7 +35,13 @@
 				<td class="shrink">{{artikel.minimumVoorraad}}</td>
 				<td class="shrink">{{artikel.voorraadAantal}}</td>
 				<td class="shrink">{{artikel.bestelserie}}</td>
-        <td class="shrink">{{artikel.Active}}</td>
+        <td class="shrink">
+          {% if artikel.Active == 1 %}
+            Actief
+          {% else %}
+          Non-Actief
+          {% endif %}
+        </td>
 				<td class="shrink">
 				<a href="{{ path('artikelwijzigen',{'artikelnummer':artikel.artikelnummer}) }}">Wijzig</a>
 				</td>

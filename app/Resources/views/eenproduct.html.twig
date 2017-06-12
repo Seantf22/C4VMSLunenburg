@@ -2,57 +2,21 @@
 {% block body %}
  <div>
  <table>
-<tr>
-	<td>
-		Artikelummer:
-		{{artikel.artikelnummer}}
-	</td>
-</tr>
-	<td>
-		Omschrijving:
-		{{artikel.omschrijving}}
-	</td>
-</tr>
-<tr>
-	<td>
-		Technische Specificaties
-		{{artikel.technischeSpecificaties}}
-	</td>
-</tr>
-	<td>
-		Magazijnlocatie:
-		{{artikel.magazijnlocatie.magazijnlocatie}}
-	</td>
-</tr>
-<tr>
-	<td>
-		Inkoopprijs:
-		{{artikel.inkoopprijs}}
-	</td>
-</tr>
-<tr>
-	<td>
-		Vervangende Artikel:
-		{{artikel.codeVervangendArtikel}}
-	</td>
-</tr>
-	<td>
-		Minimumvoorraad
-		{{artikel.minimumVoorraad}}
-	</td>
-</tr>
-<tr>
-	<td>
-		Voorraad:
-		{{artikel.voorraadAantal}}
-	</td>
-</tr>
-<tr>
-	<td>
-		Bestelserie:
-		{{artikel.bestelserie}}
-	</td>
-</tr>
+<tr><td>Artikelummer: <td/>{{artikel.artikelnummer}}</td></tr>
+    <td>Omschrijving:	<td/>{{artikel.omschrijving}}</td></tr>
+<tr><td>Technische specificaties: <td/>{{artikel.technischeSpecificaties}}</td></tr>
+    <td>Magazijnlocatie: <td/>{{artikel.magazijnlocatie.magazijnlocatie}}</td></tr>
+<tr><td>Inkoopprijs: <td/>€ {{artikel.inkoopprijs}}</td></tr>
+<tr><td>Vervangende Artikel:<td/>
+  {% if artikel.codeVervangendArtikel == NULL %}
+    {{artikel.codeVervangendArtikel}}</td></tr>
+  {% else %}
+  <a href="{{ path('toonArtikel',{'artikelnummer':artikel.codeVervangendArtikel.artikelnummer}) }}">{{artikel.codeVervangendArtikel}}</a></td></tr>
+  {% endif %}
+    <td>Minimumvoorraad: <td/>{{artikel.minimumVoorraad}}</td></tr>
+<tr><td>Voorraad: <td/>{{artikel.voorraadAantal}}</td></tr>
+<tr><td>Bestelserie: <td/>{{artikel.bestelserie}}</td></tr>
 </table>
 </div>
+
 {% endblock %}
