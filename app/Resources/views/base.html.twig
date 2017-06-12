@@ -34,6 +34,14 @@
 {% else %}
     <a href="{{ path('alleBestelFormulieren') }}">Overzicht bestellingen</a>
 {% endif %}
+{% if app.request.get('_route') == 'ontvangsten' %}
+    <a href="{{ path('ontvangsten') }}" class="active">Overzicht ontvangsten</a>
+{% else %}
+    <a href="{{ path('ontvangsten') }}">Overzicht ontvangsten</a>
+{% endif %}
+
+
+
 {% if app.request.get('_route') == 'search' %}
     <a href="{{ path('search') }}" class="active">Zoek Artikel</a>
 {% else %}

@@ -15,7 +15,7 @@ class BestelFormulierController extends Controller
     /**
      * @Route("/bestelformulier/nieuw", name="nieuwebestelformulier")
      */
-     public function nieuweBestelformulier(Request $request) { 
+     public function nieuweBestelformulier(Request $request) {
       $bestelformulier = new bestelformulier();
       $form = $this->createForm(BestelFormulierType::class, $bestelformulier);
       $form->handleRequest($request);
@@ -31,15 +31,15 @@ class BestelFormulierController extends Controller
     /**
      * @Route("/bestelformulier/weergeven", name="alleBestelFormulieren")
      */
-    public function alleBestelFormulieren(Request $request) { 
+    public function alleBestelFormulieren(Request $request) {
       $weergevenbestelformulier = $this->getDoctrine()->getRepository("AppBundle:BestelFormulier")->findall();
-      return new Response($this->renderView('bestelformulierweergeven.html.twig', array('bestelformulier' => $weergevenbestelformulier))); 
+      return new Response($this->renderView('bestelformulierweergeven.html.twig', array('bestelformulier' => $weergevenbestelformulier)));
     }
 
         /**
      * @Route("/artikelbestellen/{bestelordernummer}", name="bestelNieuwArtikel")
      */
-     public function bestelNieuwArtikel(Request $request, $bestelordernummer) { 
+     public function bestelNieuwArtikel(Request $request, $bestelordernummer) {
       $BestelArtikel = new BestelArtikel();
        $form = $this->createForm(BestelFormulierArtikelToevoegen::class, $BestelArtikel);
       $form->handleRequest($request);
@@ -54,9 +54,9 @@ class BestelFormulierController extends Controller
     /**
      * @Route("/bestelling/weergeven/{bestelordernummer}", name="bestellingWeergeven")
      */
-    public function bestellingweergeven(Request $request, $bestelordernummer) { 
+    public function bestellingweergeven(Request $request, $bestelordernummer) {
       $bestelling = $this->getDoctrine()->getRepository("AppBundle:BestelArtikel")->findBy(array('bestelordernummer'=>$bestelordernummer));
-      return new Response($this->renderView('allesweergevenbestelling.html.twig', array('bestelling' => $bestelling))); 
+      return new Response($this->renderView('allesweergevenbestelling.html.twig', array('bestelling' => $bestelling)));
     }
 
   }

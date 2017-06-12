@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+	<br><br>
+	<body><h1>Overzicht ontvangsten</h1></body>
+	<a href="{{ path('nieuwontvangstenformulier') }}">Nieuw ontvangst</a>
+	<br><br>
+
+
+	<table>
+	<tbody>
+
+			<tr>
+				<td class="shrink"><b>ID</b></td>
+				<td class="shrink"><b>Datum</b></td>
+				<td class="shrink"><b>Hoeveelheid</b></td>
+				<td class="shrink"><b>Kwaliteit</b></td>
+				<td class="shrink1"><b>Artikelnummer</b></td>
+				<td class="shrink1"><b>Omschrijving</b></td>
+				<td class="shrink"><b>Leverancier</b></td>
+			</tr>
+
+	{% for ontvangen in ontvangen %}
+			<tr>
+
+
+				<td>{{ ontvangen.id }}</td>
+				<td>{{ ontvangen.datum|date('d-m-Y') }}</td>
+				<td>{{ ontvangen.hoeveelheid }}</td>
+				<td>{{ ontvangen.kwaliteit }}</td>
+				<td>{{ ontvangen.artikelnummer.artikelnummer }}</td>
+				<td>{{ ontvangen.artikelnummer.omschrijving }}</td>
+				<td>{{ ontvangen.leverancier }}</td>
+
+
+			</tr>
+
+	{% endfor %}
+	</tbody>
+	</table>
+
+{% endblock %}
