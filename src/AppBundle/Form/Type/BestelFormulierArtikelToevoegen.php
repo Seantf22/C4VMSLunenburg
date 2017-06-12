@@ -28,6 +28,9 @@ class BestelFormulierArtikelToevoegen extends AbstractType
             }
         ))
         ;
+        $builder
+            ->add('aantal', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
+        ;
     }
 
 	public function configureOptions(OptionsResolver $resolver)

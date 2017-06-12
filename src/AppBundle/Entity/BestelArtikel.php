@@ -37,6 +37,12 @@ class BestelArtikel
      */
     private $artikelnummer;
 
+    /**
+    * @var int
+    *
+    * @ORM\Column(name="Aantal", type="integer", unique=false, nullable=false)
+    */
+   private $aantal;
 
     /**
      * Set artikelnummer
@@ -83,5 +89,29 @@ class BestelArtikel
     public function getBestelordernummer()
     {
         return $this->bestelordernummer;
+    }
+
+    /**
+     * Set aantal
+     *
+     * @param integer $aantal
+     *
+     * @return aantal
+     */
+    public function setAantal($aantal)
+    {
+        $this->aantal = $aantal;
+
+        return $this;
+    }
+
+    /**
+     * Get aantal
+     *
+     * @return int
+     */
+    public function getAantal()
+    {
+        return $this->aantal;
     }
 }
