@@ -1,5 +1,6 @@
     <div class="container">
 {% include 'header.html.twig'%}
+</div>
     <body>
         <div class="topnav">
 {% if app.request.get('_route') == 'alleartikelen' %}
@@ -51,6 +52,7 @@
       <a href="{{ logout_path('main') }}">Log uit</a>
 
   </div>
+    <div class="container">
 
         {% block body %}{% endblock %}
         {% block javascripts %}
