@@ -29,11 +29,11 @@
 			<tr>
 				<td class="shrink"><a href="{{ path('toonArtikel',{'artikelnummer':artikel.artikelnummer}) }}">{{artikel.artikelnummer}}</a>
 				</td>
-				<td class="shrink">{{artikel.omschrijving}}</td>
+				<td class="shrinkleft">{{artikel.omschrijving}}</td>
 				<td class="shrink">{{artikel.magazijnlocatie.magazijnlocatie}}</td>
-				<td class="shrink">{{artikel.inkoopprijs}}</td>
-				<td class="shrink">{{artikel.minimumVoorraad}}</td>
-				<td class="shrink">{{artikel.voorraadAantal}}</td>
+				<td class="shrinkleft"> €{{artikel.inkoopprijs}}</td>
+				<td class="shrinkright">{{artikel.minimumVoorraad}}</td>
+				<td class="shrinkright">{{artikel.voorraadAantal}}</td>
 				<td class="shrink">{{artikel.bestelserie}}</td>
         <td class="shrink">
           {% if artikel.Active == 1 %}

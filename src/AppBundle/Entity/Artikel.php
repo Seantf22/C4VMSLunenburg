@@ -19,7 +19,12 @@ class Artikel
      *
      * @ORM\Column(name="artikelnummer", type="text", unique=true)
      * @ORM\Id
-     *
+     * *
+     *     * @Assert\Range(
+     *      min = 1000000000,
+     *      minMessage = "Dit artikelnummer is te kort moet minimaal 10 cijfers zijn."
+     *     
+     * )
      */
      
     private $artikelnummer;
@@ -54,6 +59,12 @@ class Artikel
      * @var string
      *
      * @ORM\Column(name="inkoopprijs", type="decimal", precision=10, scale=2)
+        * *
+     *     * @Assert\Range(
+     *      min = 0,
+     *      minMessage = "De prijs mag niet negatief zijn."
+     *     
+     * )
      */
 
     private $inkoopprijs;
@@ -71,6 +82,12 @@ class Artikel
      * @var int
      *
      * @ORM\Column(name="minimum_voorraad", type="integer")
+             * *
+     *     * @Assert\Range(
+     *      min = 0,
+     *      minMessage = "De minimum voorraad mag niet negatief zijn."
+     *     
+     * )
      */
     private $minimumVoorraad;
 
@@ -78,6 +95,12 @@ class Artikel
      * @var int
      *
      * @ORM\Column(name="voorraad_aantal", type="integer")
+             * *
+     *     * @Assert\Range(
+     *      min = 0,
+     *      minMessage = "De actuele voorraad mag niet negatief zijn."
+     *     
+     * )
      */
     private $voorraadAantal;
 
@@ -85,6 +108,12 @@ class Artikel
      * @var int
      *
      * @ORM\Column(name="bestelserie", type="integer")
+             * *
+     *     * @Assert\Range(
+     *      min = 10000,
+     *      minMessage = "De bestel serie moet 5 karakters zijn en moet beginnen met een 1"
+     *     
+     * )
      */
 
     private $bestelserie;

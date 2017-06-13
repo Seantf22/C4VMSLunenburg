@@ -24,13 +24,13 @@
 			<tr>
 
 
-				<td>{{ ontvangen.id }}</td>
-				<td>{{ ontvangen.datum|date('d-m-Y') }}</td>
-				<td>{{ ontvangen.hoeveelheid }}</td>
-				<td>{{ ontvangen.kwaliteit }}</td>
-				<td>{{ ontvangen.artikelnummer.artikelnummer }}</td>
-				<td>{{ ontvangen.artikelnummer.omschrijving }}</td>
-				<td>{{ ontvangen.leverancier }}</td>
+				<td class="shrinkright">{{ ontvangen.id }}</td>
+				<td class="shrink">{{ ontvangen.datum|date('d-m-Y') }}</td>
+				<td class="shrinkright">{{ ontvangen.hoeveelheid }}</td>
+				<td class="shrinkleft">{{ ontvangen.kwaliteit }}</td>
+				<td class="shrink">{{ ontvangen.artikelnummer.artikelnummer }}</td>
+				<td class="shrinkleft">{{ ontvangen.artikelnummer.omschrijving }}</td>
+				<td class="shrinkleft">{{ ontvangen.leverancier }}</td>
 
 
 			</tr>

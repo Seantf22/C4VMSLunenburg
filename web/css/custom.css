@@ -16,6 +16,7 @@ a {
 .topnav {
   overflow: hidden;
   background-color: black;
+  
 
 
 }
@@ -63,7 +64,9 @@ table td {
 }
 
 table td.shrink {
-    white-space:nowrap;
+  text-align: center;
+  
+
 }
 table td.shrink1 {
     white-space:nowrap;
@@ -76,3 +79,12 @@ table td.expand {
 li{
       list-style:none;
 }
+
+td.shrinkright{
+  text-align: right;
+  padding-right: 5px; 
+ }
+
+ td.shrinkleft{
+  padding-left: 5px;
+ }

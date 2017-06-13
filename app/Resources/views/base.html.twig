@@ -25,11 +25,6 @@
 {% else %}
     <a href="{{ path('alleretouren') }}">Retouren</a>
 {% endif %}
-{% if app.request.get('_route') == 'nieuwebestelformulier' %}
-    <a href="{{ path('nieuwebestelformulier') }}" class="active">Bestel formulier</a>
-{% else %}
-    <a href="{{ path('nieuwebestelformulier') }}">Bestel formulier</a>
-{% endif %}
 {% if app.request.get('_route') == 'alleBestelFormulieren' %}
     <a href="{{ path('alleBestelFormulieren') }}" class="active">Overzicht bestellingen</a>
 {% else %}

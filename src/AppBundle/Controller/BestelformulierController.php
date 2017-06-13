@@ -74,7 +74,8 @@ class BestelFormulierController extends Controller
         //$bestelling = $BestelFormulier->getBestelordernummer();
         $bestelling = $BestelFormulier->getBestelordernummer()->getBestelordernummer();
         print_r($bestelling);
-        return $this->redirect("/artikelbestellen/$bestelling");
+        return $this->redirect("../../artikelbestellen/$bestelling");
+        //return $this->redirect("/symfony/C4VMSLunenburg/web/app_dev.php/artikelbestellen/$bestelling");
         //return $this->redirect($this->generateurl("{{ path('bestelNieuwArtikel',{'bestelordernummer':$bestelling}) }}");
         //echo $form;
         //print_r($form->getBestelordernummer());
