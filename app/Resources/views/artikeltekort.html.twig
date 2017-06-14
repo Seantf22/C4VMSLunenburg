@@ -1,38 +1,35 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-
 	<br><br>
 	<body><h1>Overzicht tekorten</h1></body>
 	<br><br>
 
-
 	<table>
 	<tbody>
 
-			<tr>
-				<td class="shrink"><b>Artikelnummer</b></td>
-				<td class="shrink"><b>Omschrijving</b></td>
-				<td class="shrink"><b>Magazijnlocatie</b></td>
-				<td class="shrink"><b>Inkoopprijs</b></td>
-				<td class="shrink1"><b>Minimumvoorraad</b></td>
-				<td class="shrink1"><b>Actuele voorraad</b></td>
-				<td class="shrink"><b>Bestelserie</b></td>
-				<td class="shrink"><b>Bestellen</b></td>
-			</tr>
+	<tr>
+		<td class="shrink"><b>Artikelnummer</b></td>
+		<td class="shrink"><b>Omschrijving</b></td>
+		<td class="shrink"><b>Magazijnlocatie</b></td>
+		<td class="shrink"><b>Inkoopprijs</b></td>
+		<td class="shrink1"><b>Minimumvoorraad</b></td>
+		<td class="shrink1"><b>Actuele voorraad</b></td>
+		<td class="shrink"><b>Bestelserie</b></td>
+		<td class="shrink"><b>Toevoegen aan bestelling</b></td>
+	</tr>
 
 	{% for tekort in tekort %}
-			<tr>
-				<td><a href="{{ path('toonArtikel',{'artikelnummer':tekort.artikelnummer}) }}">{{ tekort.artikelnummer }}</a></td>
-				<td>{{ tekort.omschrijving }}</td>
-				<td>{{ tekort.magazijnlocatie.magazijnlocatie }}</td>
-				<td>{{ tekort.inkoopprijs }}</td>
-				<td>{{ tekort.minimumVoorraad }}</td>
-				<td>{{ tekort.voorraadAantal }}</td>
-				<td>{{ tekort.bestelserie }}</td>
-				<td><a href="{{ path('tekortbestellen')}}">Bestel</a></td>
-				<!-- <td><a href="{{ path('toonArtikel',{'artikelnummer':tekort.artikelnummer}) }}">Bestel</a></td> -->
-			</tr>
-
+		<tr>
+			<td class="shrink"><a href="{{ path('toonArtikel',{'artikelnummer':tekort.artikelnummer}) }}">{{ tekort.artikelnummer }}</a></td>
+			<td class="shrink">{{ tekort.omschrijving }}</td>
+			<td class="shrink">{{ tekort.magazijnlocatie.magazijnlocatie }}</td>
+			<td class="shrink">{{ tekort.inkoopprijs }}</td>
+			<td class="shrink">{{ tekort.minimumVoorraad }}</td>
+			<td class="shrink">{{ tekort.voorraadAantal }}</td>
+			<td class="shrink">{{ tekort.bestelserie }}</td>
+			<td class="shrink"><a href="{{ path('tekortbestellen',{'artikel':tekort.artikelnummer}) }}">Toevoegen aan bestelling</a></td>
+			<!-- <td><a href="{{ path('toonArtikel',{'artikelnummer':tekort.artikelnummer}) }}">Bestel</a></td> -->
+		</tr>
 	{% endfor %}
 	</tbody>
 	</table>

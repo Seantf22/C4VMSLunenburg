@@ -29,7 +29,7 @@ class BestelFormulier
     private $bestelordernummer;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
      * @ORM\Column(name="Leverdatum", type="datetime")
      */
@@ -73,7 +73,7 @@ class BestelFormulier
     /**
      * Set leverdatum
      *
-     * @param \DateTime $leverdatum
+     * @param \Date $leverdatum
      *
      * @return BestelFormulier
      */
@@ -87,11 +87,10 @@ class BestelFormulier
     /**
      * Get leverdatum
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getLeverdatum()
     {
         return $this->leverdatum;
     }
 }
-

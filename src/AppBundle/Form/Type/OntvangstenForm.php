@@ -20,13 +20,15 @@ class OntvangstenForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
+
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
         $builder
         ->add('artikelnummer', EntityType::class, array(
             'class' => 'AppBundle:Artikel',
             'choice_label' => function ($artikel) {
               return $artikel->getArtikelnummer() . ' ' . $artikel->getOmschrijving();
-            }
+            },
+            
         ))
         ;
         $builder->add('datum', DateType::class, array(

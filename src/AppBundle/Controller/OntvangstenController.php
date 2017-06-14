@@ -25,6 +25,7 @@ class OntvangstenController extends Controller
      */
      public function nieuwOntvangstenformulier(Request $request, $artikelnummer=0 ) {
       $ontvangstformulier = new ontvangsten();
+      $ontvangstformulier->setDatum(new \DateTime);
       $form = $this->createForm(OntvangstenForm::class, $ontvangstformulier);
       $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {

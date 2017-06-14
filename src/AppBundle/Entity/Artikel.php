@@ -21,7 +21,7 @@ class Artikel
      * @ORM\Id
      *
      */
-     
+
     private $artikelnummer;
 
     /**
@@ -86,31 +86,27 @@ class Artikel
      *
      * @ORM\Column(name="bestelserie", type="integer")
      */
-
     private $bestelserie;
 
-
-        /**
-     * @var int
-     *
-     * @ORM\Column(name="active", type="integer")
-     */
+################################################################################
+    /**
+    * @var int
+    *
+    * @ORM\Column(name="active", type="integer")
+    */
     private $active;
 
 
-public function setActive($active)
-{
-    $this->active = $active;
+    public function setActive($active)
+    {
+        $this->active = $active;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getActive(){
-    return $this->active;
-}
-
-
-
+    public function getActive(){
+        return $this->active;
+    }
 
     /**
      * Get id

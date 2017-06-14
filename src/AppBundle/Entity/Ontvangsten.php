@@ -37,7 +37,7 @@ class Ontvangsten
 
     /**
      * @var int
-     * @ORM\ManyToOne(targetEntity="Artikel", inversedBy="nummers")
+     * @ORM\ManyToOne(targetEntity="Artikel")
      * @ORM\JoinColumn(name="artikelnummer", referencedColumnName="artikelnummer")
      */
     private $artikelnummer;
