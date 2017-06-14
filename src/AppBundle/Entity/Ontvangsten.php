@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Ontvnagsten
  *
@@ -60,6 +60,12 @@ class Ontvangsten
      * @var int
      *
      * @ORM\Column(name="hoeveelheid", type="integer")
+                 * *
+     *     * @Assert\Range(
+     *      min = 0,
+     *      minMessage = "De hoeveelheid mag niet negatief zijn."
+     *     
+     * )
      */
     private $hoeveelheid;
 

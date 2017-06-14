@@ -3,6 +3,7 @@
 
 <br></br>
 <h1>Overzicht Bestellingen</h1>
+<a href="{{ path('nieuwebestelformulier') }}">Nieuw bestelformulier</a>
 <br></br>
 
 <table>
@@ -15,9 +16,9 @@
 
 		{% for bestelformulier in bestelformulier %}
 			<tr>
-			<td><a href="{{ path('bestellingWeergeven',{'bestelordernummer':bestelformulier.bestelordernummer}) }}">{{ bestelformulier.Bestelordernummer }}</a></td>
-			<td>{{ bestelformulier.Leverdatum|date('d-m-Y') }}</td>
-			<td><a href="{{ path('bestelNieuwArtikel',{'bestelordernummer':bestelformulier.bestelordernummer}) }}">Artikel toevoegen</td></a>
+			<td class="shrink"><a href="{{ path('bestellingWeergeven',{'bestelordernummer':bestelformulier.bestelordernummer}) }}">{{ bestelformulier.Bestelordernummer }}</a></td>
+			<td class="shrink">{{ bestelformulier.Leverdatum|date('d-m-Y') }}</td>
+			<td class="shrink"><a href="{{ path('bestelNieuwArtikel',{'bestelordernummer':bestelformulier.bestelordernummer}) }}">Artikel toevoegen</td></a>
 			</tr>
 
  		{% endfor %}

@@ -7,6 +7,7 @@
 	<table>
 	<tbody>
 
+<<<<<<< HEAD
 	<tr>
 		<td class="shrink"><b>Artikelnummer</b></td>
 		<td class="shrink"><b>Omschrijving</b></td>
@@ -30,6 +31,32 @@
 			<td class="shrink"><a href="{{ path('tekortbestellen',{'artikel':tekort.artikelnummer}) }}">Toevoegen aan bestelling</a></td>
 			<!-- <td><a href="{{ path('toonArtikel',{'artikelnummer':tekort.artikelnummer}) }}">Bestel</a></td> -->
 		</tr>
+=======
+			<tr>
+				<td class="shrink"><b>Artikelnummer</b></td>
+				<td class="shrink"><b>Omschrijving</b></td>
+				<td class="shrink"><b>Magazijnlocatie</b></td>
+				<td class="shrink"><b>Inkoopprijs</b></td>
+				<td class="shrink"><b>Minimumvoorraad</b></td>
+				<td class="shrink"><b>Actuele voorraad</b></td>
+				<td class="shrink"><b>Bestelserie</b></td>
+				<td class="shrink"><b>Bestellen</b></td>
+			</tr>
+
+	{% for tekort in tekort %}
+			<tr>
+				<td class="shrink"><a href="{{ path('toonArtikel',{'artikelnummer':tekort.artikelnummer}) }}">{{ tekort.artikelnummer }}</a></td>
+				<td class="shrinkleft">{{ tekort.omschrijving }}</td>
+				<td class="shrink">{{ tekort.magazijnlocatie.magazijnlocatie }}</td>
+				<td class="shrinkright">{{ tekort.inkoopprijs }}</td>
+				<td class="shrinkright">{{ tekort.minimumVoorraad }}</td>
+				<td class="shrinkright">{{ tekort.voorraadAantal }}</td>
+				<td class="shrink">{{ tekort.bestelserie }}</td>
+				<td class="shrink"><a href="{{ path('tekortbestellen')}}">Bestel</a></td>
+				<!-- <td><a href="{{ path('toonArtikel',{'artikelnummer':tekort.artikelnummer}) }}">Bestel</a></td> -->
+			</tr>
+
+>>>>>>> c09124be76d88b42ed6153d5e3397ea980d72974
 	{% endfor %}
 	</tbody>
 	</table>

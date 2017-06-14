@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * BestelFormulier
@@ -25,6 +26,14 @@ class BestelFormulier
      * @var int
      *
      * @ORM\Column(name="Bestelordernummer", type="integer", unique=true)
+     * *
+     *     * @Assert\Range(
+     *      min = 10000,
+     *      max = 99999,
+     *      minMessage = "Het bestelordernummer moet positief zijn en uit 5 cijfers bestaan.",
+     *      maxMessage = "Het bestelordernummer mag maximaal uit 5 cijfers bestaan."
+     *     
+     * )
      */
     private $bestelordernummer;
 

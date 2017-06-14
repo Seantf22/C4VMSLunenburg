@@ -23,13 +23,13 @@
 
 	{% for retour in retouren %}
 		<tr>
-			<td>{{ retour.retournummer }}</td>
-			<td>{{ retour.artikel.artikelnummer }}</td>
-			<td>{{ retour.artikel.omschrijving }}</td>
-			<td>{{ retour.aantal }}</td>
-			<td>{{ retour.verwachteleverdatum|date('d-m-Y') }}</td>
-			<td><a href="{{ path('retourwijzigen',{'retournummer':retour.retournummer}) }}">Wijzig</a></td>
-			<td><a href="{{ path('retourwijzigen',{'retournummer':retour.retournummer}) }}">Archiveer</a></td>
+			<td class="shrinkleft">{{ retour.retournummer }}</td>
+			<td class="shrinkleft">{{ retour.artikel.artikelnummer }}</td>
+			<td class="shrinkleft">{{ retour.artikel.omschrijving }}</td>
+			<td class="shrinkright">{{ retour.aantal }}</td>
+			<td class="shrink">{{ retour.verwachteleverdatum|date('d-m-Y') }}</td>
+			<td class="shrink"><a href="{{ path('retourwijzigen',{'retournummer':retour.retournummer}) }}">Wijzig</a></td>
+			<td class="shrink"><a href="{{ path('retourwijzigen',{'retournummer':retour.retournummer}) }}">Archiveer</a></td>
 
 		</tr>
 	{% endfor %}

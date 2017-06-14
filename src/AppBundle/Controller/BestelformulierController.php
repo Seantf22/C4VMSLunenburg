@@ -93,8 +93,22 @@ class BestelFormulierController extends Controller
         $BestelArtikel->setBestelordernummer($bestelordernummer);
         $em->persist($BestelArtikel);
         $em->flush();
+<<<<<<< HEAD
         return $this->redirect($this->generateurl("bestellingWeergeven", array("bestelordernummer" => $bestelordernummer)));
       }
+=======
+        //$bestelling = $BestelFormulier->getBestelordernummer();
+        $bestelling = $BestelFormulier->getBestelordernummer()->getBestelordernummer();
+        print_r($bestelling);
+        return $this->redirect("../../artikelbestellen/$bestelling");
+        //return $this->redirect("/symfony/C4VMSLunenburg/web/app_dev.php/artikelbestellen/$bestelling");
+        //return $this->redirect($this->generateurl("{{ path('bestelNieuwArtikel',{'bestelordernummer':$bestelling}) }}");
+        //echo $form;
+        //print_r($form->getBestelordernummer());
+
+
+       }
+>>>>>>> c09124be76d88b42ed6153d5e3397ea980d72974
       return new Response($this->renderView('bestelformulierArtikel.html.twig', array('form' => $form->createView())));
     }
 }

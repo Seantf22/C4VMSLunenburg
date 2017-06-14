@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Retouren
  *
@@ -39,6 +39,12 @@ class Retouren
      * @var int
      *
      * @ORM\Column(name="aantal", type="integer")
+             * *
+     *     * @Assert\Range(
+     *      min = 0,
+     *      minMessage = "Het aantal mag niet negatief zijn."
+     *     
+     * )
      */
     private $aantal;
 

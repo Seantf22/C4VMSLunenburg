@@ -8,31 +8,31 @@
 <table>
 	<tbody>
 			<tr>
-				<td class="shrink" align="center"><b>Artikelnummer</b></td>
-				<td class="shrink" align="center"><b>Omschrijving</b></td>
-				<td class="shrink" align="center"><b>Magazijnlocatie</b></td>
-				<td class="shrink" align="center"><b>Inkoopprijs</b></td>
-				<td class="shrink1" align="center"><b>Minimumvoorraad</b></td>
-				<td class="shrink1" align="center"><b>Actuele voorraad</b></td>
-				<td class="shrink" align="center"><b>Bestelserie</b></td>
-				<td class="shrink" align="center"><b>Wijzig</b></td>
-				<td class="shrink" align="center"><b>Archiveer</b></td>
+				<td class="shrink"><b>Artikelnummer</b></td>
+				<td class="shrink"><b>Omschrijving</b></td>
+				<td class="shrink"><b>Magazijnlocatie</b></td>
+				<td class="shrink"><b>Inkoopprijs</b></td>
+				<td class="shrink"><b>Minimumvoorraad</b></td>
+				<td class="shrink"><b>Actuele voorraad</b></td>
+				<td class="shrink"><b>Bestelserie</b></td>
+				<td class="shrink"><b>Wijzig</b></td>
+				<td class="shrink"><b>Archiveer</b></td>
 			</tr>
 
 		{% for artikel in artikel %}
 			<tr>
-				<td class="shrink" align="center"><a href="{{ path('toonArtikel',{'artikelnummer':artikel.artikelnummer}) }}">{{artikel.artikelnummer}}</a>
+				<td class="shrink"><a href="{{ path('toonArtikel',{'artikelnummer':artikel.artikelnummer}) }}">{{artikel.artikelnummer}}</a>
 				</td>
-				<td class="shrink">{{artikel.omschrijving}}</td>
-				<td class="shrink" align="center">{{artikel.magazijnlocatie.magazijnlocatie}}</td>
-				<td class="shrink" align="right">€ {{artikel.inkoopprijs}}</td>
-				<td class="shrink" align="right">{{artikel.minimumVoorraad}}</td>
-				<td class="shrink" align="right">{{artikel.voorraadAantal}}</td>
-				<td class="shrink" align="center">{{artikel.bestelserie}}</td>
-				<td class="shrink" align="center">
+				<td class="shrinkleft">{{artikel.omschrijving}}</td>
+				<td class="shrink">{{artikel.magazijnlocatie.magazijnlocatie}}</td>
+				<td class="shrinkright">€ {{artikel.inkoopprijs}}</td>
+				<td class="shrinkright">{{artikel.minimumVoorraad}}</td>
+				<td class="shrinkright" align="right">{{artikel.voorraadAantal}}</td>
+				<td class="shrink">{{artikel.bestelserie}}</td>
+				<td class="shrink">
 				<a href="{{ path('artikelwijzigen',{'artikelnummer':artikel.artikelnummer}) }}">Wijzig</a>
 				</td>
-				<td class="shrink" align="center">
+				<td class="shrink">
 				<a href="{{ path('artikelverwijderenbevestingen',{'artikelnummer':artikel.artikelnummer}) }}">Archiveer</a>
 			</tr>
 

@@ -1,5 +1,6 @@
     <div class="container">
 {% include 'header.html.twig'%}
+</div>
     <body>
         <div class="topnav">
 {% if app.request.get('_route') == 'alleartikelen' %}
@@ -24,11 +25,6 @@
 {% else %}
     <a href="{{ path('alleretouren') }}">Retouren</a>
 {% endif %}
-{% if app.request.get('_route') == 'nieuwebestelformulier' %}
-    <a href="{{ path('nieuwebestelformulier') }}" class="active">Bestel formulier</a>
-{% else %}
-    <a href="{{ path('nieuwebestelformulier') }}">Bestel formulier</a>
-{% endif %}
 {% if app.request.get('_route') == 'alleBestelFormulieren' %}
     <a href="{{ path('alleBestelFormulieren') }}" class="active">Overzicht bestellingen</a>
 {% else %}
@@ -51,6 +47,7 @@
       <a href="{{ logout_path('main') }}">Log uit</a>
 
   </div>
+    <div class="container">
 
         {% block body %}{% endblock %}
         {% block javascripts %}
